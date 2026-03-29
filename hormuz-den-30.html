@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kompletná vrstevnatá analýza ropnej krízy z blokovania Hormuzského prielivu 2026 — premenné, časové línie, riešenia.">
+<title>Hormuz Kríza 2026 — Kompletná Analýza</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;padding:1rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 0 3rem}
+.hdr{border-left:3px solid #E24B4A;padding:.5rem 0 .5rem 1rem;margin-bottom:.75rem}
+.hdr h1{font-size:18px;font-weight:500}
+.hdr .sub{font-size:12px;color:#666;margin-top:3px}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-top:5px;margin-right:4px}
+.b-red{background:#fcebeb;color:#a32d2d}
+.b-amb{background:#faeeda;color:#854f0b}
+.b-grn{background:#eaf3de;color:#3b6d11}
+.b-inf{background:#e6f1fb;color:#185fa5}
+.tabs{display:flex;gap:3px;border-bottom:1px solid #ddd;margin-bottom:1rem;flex-wrap:wrap;background:#fff;padding:.5rem .5rem 0;border-radius:8px 8px 0 0}
+.tab{padding:5px 10px;font-size:12px;cursor:pointer;border:none;background:none;color:#666;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tab.active{color:#1a1a1a;border-bottom-color:#E24B4A;font-weight:500}
+.panel{display:none}.panel.active{display:block}
+.card{border:1px solid #e0dfd8;border-radius:10px;background:#fff;margin-bottom:.85rem;overflow:hidden}
+.card-hdr{display:flex;align-items:center;justify-content:space-between;padding:.55rem .9rem;background:#f5f4f0;cursor:pointer;user-select:none}
+.card-hdr-left{display:flex;align-items:center;gap:8px}
+.letter{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;flex-shrink:0}
+.card-title{font-size:13px;font-weight:500}
+.card-body{padding:.7rem .9rem;display:none}
+.card-body.open{display:block}
+.pills{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:.65rem}
+.pill{font-size:11px;padding:2px 7px;border-radius:10px;border:1px solid #ddd;color:#555}
+.pill.key{font-weight:500;background:#faeeda;color:#854f0b;border-color:transparent}
+.pill.now{background:#fcebeb;color:#a32d2d;border-color:transparent;font-weight:500}
+.ks{margin-bottom:.6rem}
+.ks-lbl{font-size:11px;font-weight:500;color:#ba7517;margin-bottom:2px}
+.ks-txt{font-size:12px;color:#555;line-height:1.5}
+.imp{display:flex;align-items:center;gap:8px;margin-top:.5rem}
+.imp-lbl{font-size:11px;color:#888;min-width:70px}
+.imp-bar{flex:1;height:5px;background:#e0dfd8;border-radius:3px}
+.imp-fill{height:100%;border-radius:3px}
+.imp-val{font-size:11px;font-weight:500;min-width:70px}
+.tl-card{border:1px solid #e0dfd8;border-radius:10px;overflow:hidden;margin-bottom:1rem;background:#fff}
+.tl-hdr{padding:.55rem .9rem;font-size:13px;font-weight:500}
+.tl-body{padding:.7rem .9rem}
+.tl-row{display:grid;grid-template-columns:76px 1fr;gap:7px;margin-bottom:.6rem;align-items:start}
+.tt{font-size:10px;font-weight:500;padding:2px 5px;border-radius:4px;text-align:center;line-height:1.3}
+.tt-p{background:#f5f4f0;color:#555}
+.tt-n{background:#fcebeb;color:#a32d2d}
+.tt-f{background:#e6f1fb;color:#185fa5}
+.tt-x{background:#faeeda;color:#854f0b}
+.tt-r{background:#eaf3de;color:#3b6d11}
+.tl-txt{font-size:12px;color:#444;line-height:1.5}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.src-card{background:#f5f4f0;border:1px solid #e0dfd8;border-radius:8px;padding:.55rem .75rem}
+.src-name{font-size:12px;font-weight:500}
+.src-sub{font-size:11px;color:#888;margin-top:2px}
+.src-reach{font-size:11px;color:#185fa5;margin-top:2px}
+.ana-card{border:1px solid #e0dfd8;border-radius:10px;margin-bottom:.85rem;overflow:hidden;background:#fff}
+.ana-hdr{padding:.55rem .9rem;font-size:13px;font-weight:500;background:#f5f4f0}
+.ana-body{padding:.7rem .9rem}
+.ana-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:.5rem}
+.ana-lbl{font-size:11px;font-weight:500;color:#888;margin-bottom:3px}
+.ana-val{font-size:12px;color:#555;line-height:1.4}
+.diff-row{margin-top:.5rem;padding-top:.5rem;border-top:1px solid #e0dfd8}
+.diff-lbl{font-size:11px;font-weight:500;color:#a32d2d;margin-bottom:3px}
+.diff-val{font-size:12px;color:#555;line-height:1.4}
+.sol-card{border:1px solid #e0dfd8;border-radius:10px;margin-bottom:.85rem;overflow:hidden;background:#fff}
+.sol-hdr{padding:.55rem .9rem;font-size:13px;font-weight:500}
+.sol-body{padding:.7rem .9rem}
+.sol-row{margin-bottom:.65rem}
+.sol-lbl{font-size:11px;font-weight:500;color:#ba7517;margin-bottom:3px}
+.sol-txt{font-size:12px;color:#555;line-height:1.5}
+.q-item{background:#f5f4f0;border-radius:8px;padding:.5rem .75rem;margin-bottom:.5rem;font-size:12px;color:#444;border:1px solid #e0dfd8}
+.divider{height:1px;background:#e0dfd8;margin:.65rem 0}
+.section-lbl{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#888;margin:1.25rem 0 .6rem}
+.tag-common{display:inline-block;font-size:11px;padding:2px 7px;border-radius:10px;margin:2px;background:#eaf3de;color:#3b6d11}
+@media(max-width:600px){
+  .g2{grid-template-columns:1fr}
+  .ana-row{grid-template-columns:1fr}
+  .tl-row{grid-template-columns:60px 1fr}
+  .tabs{gap:2px}
+  .tab{padding:4px 7px;font-size:11px}
+  body{padding:.5rem}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr">
+  <h1>Hormuzský prieliv — Ropná kríza 2026</h1>
+  <div class="sub">Kompletná vrstevnatá analýza | Update 29. marca 2026 (deň 30) | Verifikácia + historické analógie + riešenia</div>
+  <span class="badge b-red">⚡ AKTÍVNA KRÍZA — deň 30</span>
+  <span class="badge b-amb">📅 Deadline: 6. apríla 2026</span>
+  <span class="badge b-grn">🛢 Brent ~100 USD/bl</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" onclick="showP('src')">Zdroje & Analógie</button>
+  <button class="tab" onclick="showP('vars')">Premenné & Stavy</button>
+  <button class="tab" onclick="showP('lines')">Časové línie</button>
+  <button class="tab" onclick="showP('common')">Zhodné prvky & Extrápolácia</button>
+  <button class="tab" onclick="showP('solutions')">Riešenia & Otázky</button>
+</div>
+
+<div class="panel active" id="panel-src">
+  <div class="section-lbl">Zdrojová množina — verifikované primárne zdroje</div>
+  <div class="g2">
+    <div class="src-card"><div class="src-name">Wikipedia – 2026 Strait of Hormuz crisis</div><div class="src-sub">Encyklopedický agregát, priebežne aktualizovaný</div><div class="src-reach">Dosah: globálny · ★★★★☆</div></div>
+    <div class="src-card"><div class="src-name">Bloomberg / NPR / CBS News</div><div class="src-sub">Správy z 29.3.2026 — ekonomika, energia, diplomacia</div><div class="src-reach">Dosah: globálny · ★★★★★</div></div>
+    <div class="src-card"><div class="src-name">Al Jazeera Centre for Studies</div><div class="src-sub">Analytické správy o geopolitike a energetike</div><div class="src-reach">Dosah: globálny · ★★★★☆</div></div>
+    <div class="src-card"><div class="src-name">World Economic Forum / IEA</div><div class="src-sub">Ekonomická analýza, energetická bezpečnosť</div><div class="src-reach">Dosah: globálny/expertný · ★★★★★</div></div>
+    <div class="src-card"><div class="src-name">Newland Chase</div><div class="src-sub">Denné aktualizácie — loďarstvo, diplomatický status</div><div class="src-reach">Dosah: odborný · ★★★★☆</div></div>
+    <div class="src-card"><div class="src-name">US Congress CRS Report R45281</div><div class="src-sub">Kongresová výskumná správa — vojenská politika</div><div class="src-reach">Dosah: vládny/expertný · ★★★★★</div></div>
+  </div>
+
+  <div class="section-lbl">Analógia 1 — Ropné embargo OPEC 1973–74</div>
+  <div class="ana-card">
+    <div class="ana-hdr">🛢 Ropné embargo OPEC 1973–74 (Jomkipurská vojna)</div>
+    <div class="ana-body">
+      <div class="ana-row">
+        <div><div class="ana-lbl">Spúšťač</div><div class="ana-val">Jomkipurská vojna. Egypt+Sýria útočia na Izrael. USA podporuje Izrael → OAPEC uvaľuje embargo na USA, Európu, Japonsko.</div></div>
+        <div><div class="ana-lbl">Mechanizmus šoku</div><div class="ana-val">Produkčné škrty OPEC: −4,5 mb/d (~7% ponuky). Cena ropy +300% za 6 mesiacov. Západ primárne postihnutý.</div></div>
+      </div>
+      <div class="ana-row">
+        <div><div class="ana-lbl">Výsledok / trvanie</div><div class="ana-val">5 mesiacov. Stagflácia na dekádu. US HDP −3%, nezamestnanosť 9%, inflácia 12,3%.</div></div>
+        <div><div class="ana-lbl">Politická odpoveď</div><div class="ana-val">Vznik IEA 1974. USA zakladá SPR. Francúzsko urýchľuje jadrový program.</div></div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-lbl">Kľúčový rozdiel oproti 2026</div>
+        <div class="diff-val">1973: −4,5 mb/d. 2026: Hormuz blokuje 20 mb/d — 4,4× väčší šok. 1973: západ postihnutý. 2026: najzraniteľnejší je ázijský výrobný pás (80% Hormuz ropy ide do Ázie). 1973: vojna skončila pred embargom. 2026: blokáda prebieha súbežne s vojnou.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-lbl">Analógia 2 — Tanková vojna & Operácia Earnest Will 1987–88</div>
+  <div class="ana-card">
+    <div class="ana-hdr">⚓ Iránsko-iracká tanková vojna — Hormuz 1980–88</div>
+    <div class="ana-body">
+      <div class="ana-row">
+        <div><div class="ana-lbl">Spúšťač</div><div class="ana-val">Iránsko-iracká vojna 1980–88. Obe strany útočia na tankery. USA spustila Op. Earnest Will — eskort kuvajtských tankerov.</div></div>
+        <div><div class="ana-lbl">Mechanizmus šoku</div><div class="ana-val">Selektívne útoky na tankery (nie totálna blokáda). Prieliv zostáva čiastočne funkčný.</div></div>
+      </div>
+      <div class="ana-row">
+        <div><div class="ana-lbl">Výsledok / trvanie</div><div class="ana-val">8 rokov čiastočných disrupcií. Op. Praying Mantis 1988: USA zničila iránske vojnové lode.</div></div>
+        <div><div class="ana-lbl">Politická odpoveď</div><div class="ana-val">Medzinárodné eskortné operácie. Iránska námorná kapacita dramaticky oslabená.</div></div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-lbl">Kľúčový rozdiel oproti 2026</div>
+        <div class="diff-val">1987: selektívne útoky, prieliv čiastočne funkčný. 2026: de facto totálne zastavenie (5 lodí/deň vs. 138 normálne). Asymetrické drony a míny sú dnes lacné a masové — eskort nestačí.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-vars">
+  <div class="section-lbl">Čas opisovanej skutočnosti: PRÍTOMNOSŤ — T₀ = 29. marca 2026 (deň 30)</div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog('va')">
+      <div class="card-hdr-left"><div class="letter" style="background:#FAECE7;color:#D85A30">A</div><div class="card-title">Vojensko-geopolitická situácia</div></div>
+      <span id="ch-va">▼</span>
+    </div>
+    <div class="card-body" id="bd-va">
+      <div class="pills">
+        <span class="pill now">USA+Izrael vs. Irán – aktívna vojna (deň 30)</span>
+        <span class="pill key">IRGC asymetrická blokáda – drony, míny, rakety</span>
+        <span class="pill">NATO – 22 krajín vyhlásenie, bez vojenskej akcie</span>
+        <span class="pill">Čína – neutrálna, chráni vlastné lode</span>
+        <span class="pill">India – Op. Urja Suraksha (eskort)</span>
+        <span class="pill key">Irán: selektívny priechod pre 7+ krajín (od 26.3.)</span>
+        <span class="pill">Zabitý veliteľ IRGCN Tangsiri (26. mar.)</span>
+      </div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 1 — USA vojenská kampaň vs. asymetrická blokáda</div><div class="ks-txt">Op. Epic Fury (28. feb.) zlikvidovala vedenie Iránu vrátane Chameneího. USA od 19. marca vedie kampaň: A-10, Apache, GBU-72. Zničených 120+ iránskych námorných plavidiel. Napriek tomu IRGC zachováva asymetrickú kapacitu. USA odhaduje: "ešte týždne" kým sa hrozba zníži.</div></div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 2 — Selektívna blokáda ako geopolitický nástroj</div><div class="ks-txt">26. marca Irán otvoril prieliv pre Čínu, Rusko, Indiu, Irak, Pakistan, Malajziu, Thajsko. 27. marca súhlasil s humanitárnymi + hnojivovými zásilkami (OSN). Parlament pripravuje zákon o tranzitných poplatkoch. Toto nie je totálna blokáda — je to diferenciovaný geopolitický nástroj tlaku.</div></div>
+      <div class="imp"><div class="imp-lbl">Dosah</div><div class="imp-bar"><div class="imp-fill" style="width:97%;background:#E24B4A"></div></div><div class="imp-val">Globálny</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog('vb')">
+      <div class="card-hdr-left"><div class="letter" style="background:#E6F1FB;color:#185FA5">B</div><div class="card-title">Energia — ropa, LNG, zásoby</div></div>
+      <span id="ch-vb">▼</span>
+    </div>
+    <div class="card-body" id="bd-vb">
+      <div class="pills">
+        <span class="pill now">Brent ~100 USD/bl (vrchol 126, 8.mar.)</span>
+        <span class="pill key">Analytici: možný vzrast 150–200 USD/bl</span>
+        <span class="pill">QatarEnergy: force majeure na všetky LNG exporty</span>
+        <span class="pill">IEA: 400 mil. bl rezerv — historický rekord (≈26 dní)</span>
+        <span class="pill key">TTF plyn: 60+ EUR/MWh (zdvojenie po tuhej zime)</span>
+      </div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 1 — Cena ropy ako systémová hrozba</div><div class="ks-txt">Bloomberg 29.3.: 30+ obchodníkov a analytikov jednotne: "svet nepochopil závažnosť." Historicky najrýchlejší nárast počas akéhokoľvek konfliktu. Palivové krízy v Ázii sa šíria na západ. Európa čelí diesel shortage v priebehu týždňov. Možný vzrast na 150–200 USD/bl.</div></div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 2 — LNG kríza hlbšia ako ropná</div><div class="ks-txt">QatarEnergy force majeure = Európa stratila kritickú alternatívu k ruskému plynu. Zásoby len 30% po tuhej zime. ECB odložila znižovanie sadzieb. UK inflácia smer 5%+. Oxford Institute: jednoročná blokáda = −15% globálnej LNG ponuky. Stagflačná špirála.</div></div>
+      <div class="imp"><div class="imp-lbl">Dosah</div><div class="imp-bar"><div class="imp-fill" style="width:99%;background:#E24B4A"></div></div><div class="imp-val">Civilizačný</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog('vc')">
+      <div class="card-hdr-left"><div class="letter" style="background:#EAF3DE;color:#3B6D11">C</div><div class="card-title">Dodávateľské reťazce & potravinová bezpečnosť</div></div>
+      <span id="ch-vc">▼</span>
+    </div>
+    <div class="card-body" id="bd-vc">
+      <div class="pills">
+        <span class="pill now">2 000 lodí, 20 000 námorníkov uväznených</span>
+        <span class="pill key">30% globálnych hnojív cez Hormuz — jar sadenia</span>
+        <span class="pill">Urea: +43% (475→680 USD/t)</span>
+        <span class="pill key">Hélium, síra, hliník — kritické priemyselné komodity</span>
+        <span class="pill">GCC: 80% kalórií cez Hormuz — 70% dovozu narušené</span>
+      </div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 1 — Potravinová kríza ako civilizačná hrozba</div><div class="ks-txt">Hormuz: 30% globálneho obchodu hnojivami, 50% globálneho urea + síry. Jar sadenia 2026 v USA ohrozená. WFP varuje pred dlhodobým nárastom cien potravín. Iran 27.3. súhlasil otvoriť pre humanitárne zásoby — prvý diplomatický ústup.</div></div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 2 — Skryté domino: hélium, síra, hliník</div><div class="ks-txt">~45% globálnej síry cez Hormuz. Hélium: MRI skenery, polovodičová výroba — nie je krátkodobo nahraditeľné. Hliník z UAE: automobilový, letecký, obranný priemysel. Efekt sa objaví s oneskorením 4–8 týždňov.</div></div>
+      <div class="imp"><div class="imp-lbl">Dosah</div><div class="imp-bar"><div class="imp-fill" style="width:97%;background:#E24B4A"></div></div><div class="imp-val">Globálny</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog('vd')">
+      <div class="card-hdr-left"><div class="letter" style="background:#FAEEDA;color:#BA7517">D</div><div class="card-title">Diplomatická situácia & rokovania</div></div>
+      <span id="ch-vd">▼</span>
+    </div>
+    <div class="card-body" id="bd-vd">
+      <div class="pills">
+        <span class="pill now">Trump: odklad úderov do 6. apríla</span>
+        <span class="pill key">Irán odmietol US 15-bod. návrh, vydal 5 vlastných podmienok</span>
+        <span class="pill">Sprostredkované rokovania: Omán, Katar, Pakistan</span>
+        <span class="pill key">Iránske podmienky: suverenita nad Hormuz + odškodnenie</span>
+        <span class="pill">Witkoff + Kushner + Vance aktívni</span>
+      </div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 1 — Diplomatický pat s deadlineom</div><div class="ks-txt">Trump: "takmer všetky body dohodnuté." Iran: "žiadne priame rokovania." Irán vydal 5 podmienok vrátane uznania suverenity nad Hormuz a odškodnenia za vojnové škody. Deadline 6. apríla = rozhodovací bod.</div></div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 2 — Selektívne otváranie ako diplomatický signál</div><div class="ks-txt">26. marca: Irán otvára pre 7+ krajín. 27. marca: humanitárne zásilky. Irán buduje "koalíciu neutrálnych" a dokazuje, že blokáda je politický nástroj. Trump: Iránci "chcú dohodu tak veľmi, ale boja sa to povedať."</div></div>
+      <div class="imp"><div class="imp-lbl">Dosah</div><div class="imp-bar"><div class="imp-fill" style="width:95%;background:#E24B4A"></div></div><div class="imp-val">Globálny</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog('ve')">
+      <div class="card-hdr-left"><div class="letter" style="background:#EEEDFE;color:#534AB7">E</div><div class="card-title">Ekonomické & finančné dopady</div></div>
+      <span id="ch-ve">▼</span>
+    </div>
+    <div class="card-body" id="bd-ve">
+      <div class="pills">
+        <span class="pill now">Európa: druhá energetická kríza po 2022</span>
+        <span class="pill key">Stagflácia: inflácia rastie + recesný tlak súbežne</span>
+        <span class="pill">US vojenská cena: 18 mld. USD + žiadosť o +200 mld.</span>
+        <span class="pill key">Ázijský výrobný pás: epicentrum šoku</span>
+        <span class="pill">GCC SWF: 4 bil. USD — zastavenie príjmov</span>
+      </div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 1 — Stagflačná pasca</div><div class="ks-txt">Ropný šok zvyšuje všetko, centrálne banky nemôžu znižovať sadzby. Telegraph: "V 1973 šok zasiahol produktívneho hegemona. V 2026 zasiahol finančného hegemona." US dlh 101% HDP = menej fiškálneho priestoru. US domácnosti platia +740 USD/rok za gasoline.</div></div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 2 — Ázijský výrobný pás ako epicentrum</div><div class="ks-txt">Japonsko: 87% energie z importu, 95% ropy z Blízkého východu. Kórea: 100 bil. wonov stabilizačný program. India: dvojitý fyzický + finančný šok. Vietnam: menej než 20 dní rezerv. Paralýza ázijskej výroby = globálna priemyselná kontrakcia.</div></div>
+      <div class="imp"><div class="imp-lbl">Dosah</div><div class="imp-bar"><div class="imp-fill" style="width:99%;background:#E24B4A"></div></div><div class="imp-val">Civilizačný</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-hdr" onclick="tog('vf')">
+      <div class="card-hdr-left"><div class="letter" style="background:#E1F5EE;color:#085041">F</div><div class="card-title">Energetická transformácia & štruktúrna zmena</div></div>
+      <span id="ch-vf">▼</span>
+    </div>
+    <div class="card-body" id="bd-vf">
+      <div class="pills">
+        <span class="pill now">IEA: 400 mil. bl rezerv ≈ 26 dní — tenčia sa</span>
+        <span class="pill key">Bypass kapacita len 2,6 mb/d z 20 mb/d normálnych tokov</span>
+        <span class="pill key">Bloomberg: energetická tranzícia "bude vynútená bolestivo"</span>
+        <span class="pill">Japonsko: reštart reaktorov akceleruje</span>
+      </div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 1 — IEA zásoby nedostatočné</div><div class="ks-txt">400 mil. bl = 26 dní normálnych tokov. Kríza trvá 30 dní — zásoby sa tenčia. Saudi + UAE bypass: len 2,6 mb/d z 20 mb/d. Svet čelí šoku pre ktorý neexistuje dostatočný buffer — to je historicky nové.</div></div>
+      <div class="ks"><div class="ks-lbl">⭐ Kľúčový stav 2 — Kríza ako katalyzátor transformácie</div><div class="ks-txt">WEF: "každý veľký ropný šok generuje politickú odpoveď proporcionálnu bolesti." 1973: Francúzsko → jadrový program. 2026: potenciálne väčší inštitucionálny skok. Bloomberg: "energetická tranzícia nám bude vynútená bolestivým spôsobom."</div></div>
+      <div class="imp"><div class="imp-lbl">Dosah</div><div class="imp-bar"><div class="imp-fill" style="width:96%;background:#E24B4A"></div></div><div class="imp-val">Globálny/Civ.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-lines">
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#FAECE7;color:#993C1D">🔴 Línia 1 — Vojenská eskalácia → Vynútené otvorenie</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₂</div><div class="tl-txt">Zlyhanie ženevských rokovaní (2025). 12-dňová vzdušná vojna Izrael–Irán. USA max-pressure kampaň. Irán 15–20. feb. zdvíha export 3× a znižuje zásoby. War-risk poistenie skáče z 0,125% na 0,4%.</div></div>
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₁</div><div class="tl-txt">Op. Epic Fury (28. feb.): USA+Izrael útočia, zabíjajú Chameneího. IRGC vydáva VHF varovania. Doprava klesá o 70% v priebehu hodín. Maersk, CMA CGM, MSC suspendujú tranzitnú operáciu.</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 29.3.26</div><div class="tl-txt"><strong>REÁLNY STAV:</strong> USA vedie Op. Hormuz Campaign. Zničených 120+ lodí IRGC. Zabitý Tangsiri (26.3.). 2 000 lodí uväznených. Brent ~100 USD. Trump odkladá útoky do 6.4. Selektívny priechod pre 7+ krajín.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₁</div><div class="tl-txt">6. apríla bez dohody: USA útočí na iránske elektrárne. Irán mínuje zálivové vodné cesty. Brent skáče na 130–150 USD. Globálna recesia začína. OSN v núdzovom zasadnutí.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₂</div><div class="tl-txt">USA expanduje — možné obsadenie Kharg Island. Iránska energetická infraštruktúra zničená. IRGC stráca koherenciu. Prieliv sa čiastočne otvára defacto. Dlhodobý pat mesiace/roky.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#FAEEDA;color:#854F0B">🟡 Línia 2 — Diplomatický prelom → Rámcová dohoda</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₂</div><div class="tl-txt">Omán, Katar, Pakistan ako diplomatické kanály. Čína tlačí Irán — jej 45% importu ropy cez Hormuz. Irán signalizuje ochotu k "poplatku za tranzit" nie totálnemu uzavretiu.</div></div>
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₁</div><div class="tl-txt">Blokáda začína selektívne. Čína vyjednáva vlastný koridor. India aktivuje Op. Urja Suraksha. Pakistan ponúka sprostredkovanie. Diplomatické kanály otvorené od prvého dňa.</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 29.3.26</div><div class="tl-txt"><strong>REÁLNY STAV:</strong> Witkoff + Kushner + Vance aktívni. Rubio: "konkrétny pokrok." Irán 26.3. otvára pre 7 krajín. 27.3.: humanitárne zásilky. Deadline 6. apríla = rozhodovací bod.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₁</div><div class="tl-txt">Čiastočná dohoda pred 6. aprílom: USA zastavuje útoky na energetiku. Irán otvára systematicky pod "koordináciou s iránskymi autoritami." Výmenou: čiastočné zmrazenie sankcií. Brent klesá na 80–90 USD.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₂</div><div class="tl-txt">Irán de facto kontroluje tranzit s formálnou rolou. USA dostáva "cestu von" bez straty tváre. Západ urýchľuje energetickú diverzifikáciu. Nová geopolitická realita Perzského zálivu.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#E1F5EE;color:#085041">🟢 Línia 3 — Vnútorný kolaps Iránu → Zmena režimu</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₂</div><div class="tl-txt">Irán 2025: inflácia 40%+, masívne protesty, desaťtisíce zabitých. Chameneí ako posledná súdržná autorita. Ekonomický kolaps predchádza vojenskej eskalácii.</div></div>
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₁</div><div class="tl-txt">Zabitie Chameneího — IRGC preberá kontrolu. Blokáda = reflexná odozva prežitia. Vnútorný boj IRGC vs. reformisti. Trump: Iránci "boja sa povedať že chcú dohodu."</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 29.3.26</div><div class="tl-txt"><strong>REÁLNY STAV:</strong> Zabitý Tangsiri + šéf spravodajstva IRGCN. Iránsky parlament v chaose. Irán bojuje na viacerých frontoch. Vojenská kapacita degraduje. Vnútorná frakčnosť narastá.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₁</div><div class="tl-txt">Séria cielených likvidácií IRGC velenia. Reformná frakcia kontaktuje diplomatické kanály. Čiastočné otvorenie prielivu defacto — IRGC stráca kapacitu udržiavať blokádu.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₂</div><div class="tl-txt">Prechod moci v Teheráne. Prieliv otvorený. Masívna humanitárna kríza v Iráne. Nová geopolitická mapa regiónu — nestabilita na roky.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#E6F1FB;color:#0C447C">🔵 Línia 4 — Predĺžená blokáda → Civilizačná transformácia</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₂</div><div class="tl-txt">Desaťročia ignorovania zraniteľnosti Hormuz. Globálna ekonomika závislá na 34 km vodnej ceste. OZE záväzky nepretavené do diverzifikácie. IEA zásoby budované na krátkodobé šoky.</div></div>
+      <div class="tl-row"><div class="tt tt-p">MIN. T₋₁</div><div class="tl-txt">IEA: "najväčšia výzva energetickej bezpečnosti v histórii." 400 mil. bl release (rekord). QatarEnergy force majeure. Hélium, síra, hliník, hnojivá zasiahnuté súbežne.</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 29.3.26</div><div class="tl-txt"><strong>REÁLNY STAV:</strong> Bloomberg: "svet stále nepochopil závažnosť." Ázijská výroba pod tlakom. Európa hrozí diesel shortage. GCC potravinová kríza. IEA zásoby sa tenčia.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₁</div><div class="tl-txt">Kríza trvá 2–4 mesiace. Japonsko reštartuje jadrové reaktory. Európa masívne investuje do LNG terminálov. Ázijský spoločný energetický fond vzniká. Ceny 120–150 USD núti deštrukciu dopytu.</div></div>
+      <div class="tl-row"><div class="tt tt-f">BUD. T₊₂</div><div class="tl-txt">Do 2030: závislosť od Hormuz klesá o 30–40%. Kríza 2026 = inflekčný bod energetickej histórie, väčší ako 1973. Nová diverzifikovaná energetická architektúra.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-common">
+  <div class="section-lbl">Zhodné prvky prítomné vo VŠETKÝCH 4 líniách</div>
+  <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1.25rem">
+    <span class="tag-common">✓ Cena ropy nadnormálom</span>
+    <span class="tag-common">✓ IEA rezervy aktivované a nedostatočné</span>
+    <span class="tag-common">✓ Diplomatický kanál aktívny</span>
+    <span class="tag-common">✓ Iránska kapacita blokády klesá</span>
+    <span class="tag-common">✓ Ázijské ekonomiky pod akútnym tlakom</span>
+    <span class="tag-common">✓ Európska LNG a energetická kríza</span>
+    <span class="tag-common">✓ Potravinová a hnojivová hrozba</span>
+    <span class="tag-common">✓ Štrukturálna zmena energetiky</span>
+    <span class="tag-common">✓ GCC humanitárny tlak na riešenie</span>
+    <span class="tag-common">✓ Deadline 6. apríla ako rozhodovací bod</span>
+  </div>
+
+  <div class="section-lbl">Nové body + náhodné prvky + extrápolácia</div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#FAECE7;color:#993C1D">🔴 Línia 1 rozšírená</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-x">NOVÝ BOD</div><div class="tl-txt"><strong>(IEA zásoby sa tenčia):</strong> Do konca apríla zásoby klesajú pod kritickú hranicu. IEA zvoláva mimoriadne zasadnutie o 2. vlne uvoľnenia. USA tlačí Saudskú Arábiu na max. produkciu cez Red Sea/Yanbu.</div></div>
+      <div class="tl-row"><div class="tt tt-r">🎲 NÁHODNÝ</div><div class="tl-txt"><strong>[nízka pravdepodobnosť, max. potenciál zmeny]:</strong> Iránska balistická raketa zasiahne saudskoarabský ropný terminál Jubail. Saudi Aramco zastavuje export. Globálna ponuka klesá o ďalších 6 mb/d. Brent skáče na 160–180 USD.</div></div>
+      <div class="tl-row"><div class="tt tt-f">EXTRAPOL.</div><div class="tl-txt">Útok na saudskú infraštruktúru paradoxne urýchľuje koalíciu: Saudská Arábia vstupuje aktívne na stranu USA. GCC vojenská koalícia vzniká. Irán čelí existenciálnej izolácii. Rýchlejší kolaps IRGC.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#FAEEDA;color:#854F0B">🟡 Línia 2 rozšírená</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-x">NOVÝ BOD</div><div class="tl-txt"><strong>(GCC humanitárna kríza tlačí na riešenie):</strong> GCC vydáva spoločné ultimátum: ak nebude dohoda do 15. apríla, zvažujú stiahnutie investícií z US Treasury. GCC SWF spravuje 4 bil. USD.</div></div>
+      <div class="tl-row"><div class="tt tt-r">🎲 NÁHODNÝ</div><div class="tl-txt"><strong>[nízka pravdepodobnosť, max. potenciál zmeny]:</strong> Xi Jinping telefonuje priamo Trumpovi. Navrhuje "čínsku záštitu dohody": Peking garantuje iránske dodržiavanie prímeria výmenou za čiastočné uvoľnenie technologických sankcií (čipy).</div></div>
+      <div class="tl-row"><div class="tt tt-f">EXTRAPOL.</div><div class="tl-txt">Čínsko-americká dohoda cez Irán mení geopolitickú architektúru. Irán otvára prieliv pod čínskym záštítom. Čína ako "správca" bezpečnosti Hormuz. Brent klesá na 75 USD.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#E1F5EE;color:#085041">🟢 Línia 3 rozšírená</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-x">NOVÝ BOD</div><div class="tl-txt"><strong>(Diplomatický kanál aktívny):</strong> Reformná iránska frakcia kontaktuje pakistanských sprostredkovateľov tajne bez vedomia IRGC. Navrhujú "kondicionálne zastavenie blokády." Duálna štruktúra moci v Teheráne.</div></div>
+      <div class="tl-row"><div class="tt tt-r">🎲 NÁHODNÝ</div><div class="tl-txt"><strong>[nízka pravdepodobnosť, max. potenciál zmeny]:</strong> Iránsky generál IRGC vykonáva vnútorný prevrat: zatýka "jastrabov" a vyhlasuje jednostranné zastavenie útokov na tankery. Vysiela správu cez Omán: "sme pripravení rokovať priamo."</div></div>
+      <div class="tl-row"><div class="tt tt-f">EXTRAPOL.</div><div class="tl-txt">USA a Irán vstupujú do priamych rokovaní prvýkrát. Prieliv otvorený jednostranne. Diplomatická dohoda do 2 týždňov. Nový Irán hľadá ekonomickú obnovu. Dlhodobá vnútorná nestabilita.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#E6F1FB;color:#0C447C">🔵 Línia 4 rozšírená</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-x">NOVÝ BOD</div><div class="tl-txt"><strong>(Štrukturálna zmena energetiky):</strong> Japonsko, Kórea, India, ASEAN podpisujú "Ázijskú energetickú zmluvu": spoločné jadrové kapacity, zdieľané LNG terminály, africký LNG koridor, americký LNG long-term kontrakty.</div></div>
+      <div class="tl-row"><div class="tt tt-r">🎲 NÁHODNÝ</div><div class="tl-txt"><strong>[nízka pravdepodobnosť, max. potenciál zmeny]:</strong> Vedecký tím oznamuje prienik vo fúznej energetike: prvý stabilný komerčne sľubný reaktor. Vlády investujú 200 mld. USD. Dlhodobé ropné futures klesajú. Irán stráca strategickú páku.</div></div>
+      <div class="tl-row"><div class="tt tt-f">EXTRAPOL.</div><div class="tl-txt">Krátkodobá kríza ostáva reálna (10–15 rokov do škálovateľnosti fúzie) ale geopolitická moc Hormuz eroduje v investičných modeloch. Kríza 2026 = posledná veľká Hormuz kríza.</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="panel" id="panel-solutions">
+
+  <div class="section-lbl">Hlavné témy & otázky vyplývajúce z časových línií</div>
+  <div class="q-item">↗ Aké sú konkrétne podmienky dohody USA–Irán pred 6. aprílom a je kompromis možný?</div>
+  <div class="q-item">↗ Ako kríza mení dlhodobú energetickú architektúru Európy a Ázie?</div>
+  <div class="q-item">↗ Aký je skutočný stav moci v Teheráne po zabití vedenia — kto rozhoduje?</div>
+  <div class="q-item">↗ Čo môže Čína urobiť ako sprostredkovateľ a čo by za to požadovala od USA?</div>
+  <div class="q-item">↗ Aké sú vojenské limity USA voči asymetrickým hrozbám IRGC (drony, míny)?</div>
+
+  <div class="section-lbl">Maximálne konzistentné & konkrétne riešenia</div>
+
+  <div class="sol-card">
+    <div class="sol-hdr" style="background:#E1F5EE;color:#085041">✅ Riešenie 1 — "Hormuz Protocol": Medzinárodná správa prielivu</div>
+    <div class="sol-body">
+      <div class="sol-row"><div class="sol-lbl">Mechanizmus</div><div class="sol-txt">Multilaterálna dohoda USA–Irán–Čína–India–EÚ–OSN: formalizuje "slobodný ale koordinovaný" tranzit. Model: Panamský kanál. IMO ako správca tranzitných pravidiel s iránskym dohľadom bez monopolu.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Prečo funguje</div><div class="sol-txt">Rieši iránsku požiadavku na "uznanie suverenity" diplomaticky. Čína má motiváciu tlačiť Irán (45% jej ropy cez Hormuz). India môže sprostredkovávať. OSN záštit dodáva legitimitu.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Implementácia</div><div class="sol-txt">Fáza 1 (1–2 týždne): dočasné prímerie. Fáza 2 (2–6 mes.): permanentný protokol. Fáza 3: medzinárodná správa aktívna. Požaduje zastavenie úderov na civilnú infraštruktúru ako gesto dobrej vôle.</div></div>
+    </div>
+  </div>
+
+  <div class="sol-card">
+    <div class="sol-hdr" style="background:#E6F1FB;color:#0C447C">✅ Riešenie 2 — Ázijská energetická zmluva o bezpečnosti</div>
+    <div class="sol-body">
+      <div class="sol-row"><div class="sol-lbl">Mechanizmus</div><div class="sol-txt">Japonsko, Kórea, India, ASEAN, Austrália formalizujú spoločný pakt: zdieľané strategické rezervy, spoločné LNG nákupy, diverzifikácia mimo Blízkého východu. Model: IEA pre Áziu.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Prečo funguje</div><div class="sol-txt">Znižuje strategickú zraniteľnosť voči akémukoľvek budúcemu Hormuz šoku. Japonsko, Kórea: motivácia akútna kríza. Čína môže byť pozvaná — má záujem na stabilite dodávok.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Implementácia</div><div class="sol-txt">Núdzový summit Tokio/Soul/Naí Dillí do 3 týždňov. Prvé kolo: 200 mil. bl spoločných rezerv. Cieľ: znížiť závislosť od Hormuz o 50% do 2035.</div></div>
+    </div>
+  </div>
+
+  <div class="sol-card">
+    <div class="sol-hdr" style="background:#FAEEDA;color:#854F0B">✅ Riešenie 3 — Humanitárny koridor ako diplomatický most</div>
+    <div class="sol-body">
+      <div class="sol-row"><div class="sol-lbl">Mechanizmus</div><div class="sol-txt">Rozšíriť iránsky súhlas (27.3.) pre humanitárne zásilky na plnohodnotný koridor pod OSN záštitou: potraviny, lieky, hnojivá, civilné palivo. Irán dostáva pozitívne PR. WFP a FAO ako garanti.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Prečo funguje</div><div class="sol-txt">Precedens existuje. Znižuje humanitárny tlak na GCC + globálne ceny potravín. Neohrozuje ani iránske ani americké red-lines. Buduje diplomatickú dôveru pre obchodné rokovania.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Implementácia</div><div class="sol-txt">OSN iniciatíva do 48 hodín. Irán potvrdzuje cez IMO. USA garantuje neútoky na humanitárne lode. Prvé konvoje do týždňa.</div></div>
+    </div>
+  </div>
+
+  <div class="sol-card">
+    <div class="sol-hdr" style="background:#EEEDFE;color:#534AB7">✅ Riešenie 4 — "Hormuz Never Again": Štrukturálna energetická transformácia</div>
+    <div class="sol-body">
+      <div class="sol-row"><div class="sol-lbl">Mechanizmus</div><div class="sol-txt">Globálna koordinovaná odpoveď: záväzok znížiť závislosť od Hormuz o 50% do 2035. OZE, jadrové kapacity, LNG diverzifikácia, bypass infraštruktúra. "Hormuz Index" — medzinárodne monitorovaný ukazovateľ pokroku.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Prečo funguje</div><div class="sol-txt">Rieši koreň problému. WEF: každý ropný šok generuje proporcionálnu politickú odpoveď. 1973 → IEA. 2026 → potenciálne väčší inštitucionálny skok. Politická vôľa pri maximu.</div></div>
+      <div class="sol-row"><div class="sol-lbl">Implementácia</div><div class="sol-txt">G20 mimoriadny summit apríl 2026. Záväzné energetické ciele per krajina. Spoločný fond 2 bil. USD. Japonsko, Kórea, Európa → jadrové kapacity. India, Ázia → OZE masívne.</div></div>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:2.5rem;padding-top:1rem;border-top:1px solid #e0dfd8;text-align:center;font-size:11px;color:#999">
+  Hormuzský prieliv — Ropná kríza 2026 · Analytický dokument · Zostavené 29. marca 2026<br>
+  Zdroje: Wikipedia, Bloomberg, NPR, Al Jazeera, WEF, IEA, US Congress CRS, Newland Chase
+</div>
+
+</div>
+
+<script>
+function showP(id){
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function tog(id){
+  const b=document.getElementById('bd-'+id);
+  const c=document.getElementById('ch-'+id);
+  const open=b.classList.toggle('open');
+  c.textContent=open?'▲':'▼';
+}
+</script>
+</body>
+</html>
