@@ -37,56 +37,51 @@
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
-    if (html) e.innerHTML = html;
+    if (html !== undefined) e.innerHTML = html;
     return e;
   }
 
-  function buildNav(meta, filename) {
+  function buildNav(meta) {
     var nav = el('div');
     nav.id = 'nav-component';
 
     var lang = meta.lang;
-    var pairFile = meta.pair;
 
-    // Language switcher
+    // Language switcher (left side)
     var langWrap = el('span');
-
     if (lang === 'sk') {
-      var skSpan = el('span', 'nav-lang-active', 'SK');
-      var sep = el('span', 'nav-sep', '/');
+      langWrap.appendChild(el('span', 'nav-lang-active', 'SK'));
+      langWrap.appendChild(el('span', 'nav-sep', '\u00a0/\u00a0'));
       var enLink = el('a', 'nav-lang-link', 'EN');
-      enLink.href = pairFile;
-      langWrap.appendChild(skSpan);
-      langWrap.appendChild(sep);
+      enLink.href = meta.pair;
       langWrap.appendChild(enLink);
     } else {
       var skLink = el('a', 'nav-lang-link', 'SK');
-      skLink.href = pairFile;
-      var sep2 = el('span', 'nav-sep', '/');
-      var enSpan = el('span', 'nav-lang-active', 'EN');
+      skLink.href = meta.pair;
       langWrap.appendChild(skLink);
-      langWrap.appendChild(sep2);
-      langWrap.appendChild(enSpan);
+      langWrap.appendChild(el('span', 'nav-sep', '\u00a0/\u00a0'));
+      langWrap.appendChild(el('span', 'nav-lang-active', 'EN'));
     }
-
     nav.appendChild(langWrap);
+
+    // Spacer pushes right link to the right
+    var spacer = el('span');
+    spacer.style.flex = '1';
+    nav.appendChild(spacer);
 
     // Divider
     nav.appendChild(el('span', 'nav-divider'));
 
-    // Second link: projekt or ← Index
+    // Right link: projekt or ← Index
     if (meta.type === 'analysis') {
       var projektHref = lang === 'sk' ? meta.projektSk : meta.projektEn;
       var projektLabel = lang === 'sk' ? 'Horizont udalostí' : 'Event Horizon';
-      var projektLink = el('a', 'nav-projekt');
+      var projektLink = el('a', 'nav-projekt', projektLabel);
       projektLink.href = projektHref;
-      projektLink.innerHTML = '<span class="nav-projekt-name">' + projektLabel + '</span>';
       nav.appendChild(projektLink);
     } else {
-      // projekt page — show ← Index
-      var indexLink = el('a', 'nav-projekt');
+      var indexLink = el('a', 'nav-projekt', '\u2190 Index');
       indexLink.href = 'index.html';
-      indexLink.innerHTML = lang === 'sk' ? '← Index' : '← Index';
       nav.appendChild(indexLink);
     }
 
@@ -96,9 +91,9 @@
   function init() {
     var filename = getFilename();
     var meta = PAGE_MAP[filename];
-    if (!meta) return; // unknown page, do nothing
+    if (!meta) return;
 
-    var navEl = buildNav(meta, filename);
+    var navEl = buildNav(meta);
     document.body.insertBefore(navEl, document.body.firstChild);
   }
 
