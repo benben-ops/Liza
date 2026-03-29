@@ -1,0 +1,81 @@
+/* nav-component.css — language switcher + projekt link */
+
+body {
+  padding-top: 3rem !important;
+}
+
+#nav-component {
+  position: fixed;
+  top: 0.6rem;
+  right: 0.8rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #fff;
+  border: 1px solid #e0dfd8;
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  white-space: nowrap;
+}
+
+#nav-component .nav-lang-active {
+  color: #1a1a1a;
+  font-weight: 600;
+  cursor: default;
+}
+
+#nav-component .nav-lang-link {
+  color: #E24B4A;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#nav-component .nav-lang-link:hover {
+  text-decoration: underline;
+}
+
+#nav-component .nav-sep {
+  color: #ccc;
+  font-weight: 300;
+}
+
+#nav-component .nav-divider {
+  width: 1px;
+  height: 13px;
+  background: #e0dfd8;
+  flex-shrink: 0;
+}
+
+#nav-component .nav-projekt {
+  text-decoration: none;
+  color: #888;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+}
+
+#nav-component .nav-projekt:hover {
+  color: #1a1a1a;
+}
+
+#nav-component .nav-projekt-name {
+  font-weight: 500;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  #nav-component {
+    top: 0.4rem;
+    right: 0.4rem;
+    padding: 0.25rem 0.5rem;
+    font-size: 10px;
+    gap: 0.4rem;
+  }
+
+  #nav-component .nav-projekt-name {
+    display: none;
+  }
+}

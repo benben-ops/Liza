@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kompletná vrstevnatá analýza ropnej krízy z blokovania Hormuzského prielivu 2026 — premenné, časové línie, historické analógie a riešenia. Deň 30, 29. marca 2026.">
+<title>Hormuz Kríza 2026 — Kompletná Analýza</title>
+<link rel="canonical" href="https://benben-ops.github.io/Liza/hormuz-sk.html">
+<meta property="og:title" content="Hormuz Kríza 2026 — Kompletná Analýza">
+<meta property="og:description" content="Kompletná vrstevnatá analýza ropnej krízy z blokovania Hormuzského prielivu 2026 — premenné, časové línie, historické analógie a riešenia. Deň 30, 29. marca 2026.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://benben-ops.github.io/Liza/hormuz-sk.html">
+<meta property="og:image" content="https://benben-ops.github.io/Liza/og-image.svg">
+<meta property="og:locale" content="sk_SK">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hormuz Kríza 2026 — Kompletná Analýza">
+<meta name="twitter:description" content="Kompletná vrstevnatá analýza ropnej krízy z blokovania Hormuzského prielivu 2026 — premenné, časové línie, historické analógie a riešenia.">
+<meta name="twitter:image" content="https://benben-ops.github.io/Liza/og-image.svg">
+<link rel="alternate" hreflang="sk" href="https://benben-ops.github.io/Liza/hormuz-sk.html">
+<link rel="alternate" hreflang="en" href="https://benben-ops.github.io/Liza/hormuz-den-30-en.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="nav-component.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;-webkit-font-smoothing:antialiased}
+#content-host{padding:1rem}
+</style>
+</head>
+<body>
+<div id="content-host">
+  <noscript>
+    <p style="font-family:system-ui,sans-serif;padding:2rem;font-size:14px;color:#555">
+      JavaScript je vypnutý. <a href="hormuz-den-30.html" style="color:#E24B4A">Otvor SK verziu priamo</a>.
+    </p>
+  </noscript>
+</div>
+<script src="nav-component.js"></script>
+<script>
+(function () {
+  fetch('hormuz-den-30.html')
+    .then(function (r) { return r.text(); })
+    .then(function (html) {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(html, 'text/html');
+
+      // Copy styles from source into this document (avoid duplicate Google Fonts)
+      var sourceStyles = doc.querySelectorAll('style');
+      sourceStyles.forEach(function (s) {
+        var st = document.createElement('style');
+        st.textContent = s.textContent;
+        document.head.appendChild(st);
+      });
+
+      // Inject body content
+      var host = document.getElementById('content-host');
+      var wrap = doc.querySelector('.wrap');
+      if (wrap) {
+        host.innerHTML = '';
+        host.appendChild(wrap);
+      } else {
+        host.innerHTML = doc.body.innerHTML;
+      }
+
+      // Re-execute inline scripts from source
+      doc.querySelectorAll('script').forEach(function (s) {
+        if (s.textContent.trim()) {
+          var ns = document.createElement('script');
+          ns.textContent = s.textContent;
+          document.body.appendChild(ns);
+        }
+      });
+    })
+    .catch(function () {
+      document.getElementById('content-host').innerHTML =
+        '<p style="font-family:system-ui,sans-serif;padding:2rem;font-size:14px;color:#555">' +
+        'Obsah sa nepodarilo načítať. <a href="hormuz-den-30.html" style="color:#E24B4A">Otvor SK verziu priamo</a>.' +
+        '</p>';
+    });
+})();
+</script>
+</body>
+</html>
