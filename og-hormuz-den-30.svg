@@ -10,16 +10,20 @@
         fill="#E24B4A" text-anchor="middle" dominant-baseline="middle" opacity="0.18">H</text>
 
   <!-- Project name -->
-  <text x="600" y="255" font-family="'Inter', system-ui, sans-serif" font-size="64" font-weight="600"
-        fill="#1a1a1a" text-anchor="middle" letter-spacing="-1">Horizont udalostí</text>
+  <text x="600" y="220" font-family="'Inter', system-ui, sans-serif" font-size="64" font-weight="600"
+        fill="#1a1a1a" text-anchor="middle" letter-spacing="-1">Horizont udalost&#237;</text>
 
   <!-- Subtitle EN -->
-  <text x="600" y="325" font-family="'Inter', system-ui, sans-serif" font-size="26" font-weight="400"
+  <text x="600" y="290" font-family="'Inter', system-ui, sans-serif" font-size="26" font-weight="400"
         fill="#666" text-anchor="middle">Event Horizon</text>
 
   <!-- Description -->
-  <text x="600" y="440" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="400"
-        fill="#888" text-anchor="middle">Automatizovaná extrapolácia udalostí · benben-ops</text>
+  <text x="600" y="390" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="400"
+        fill="#888" text-anchor="middle">Automatizovan&#225; extrapol&#225;cia udalost&#237; · benben-ops</text>
+
+  <!-- Article subtitle — above separator -->
+  <text x="600" y="490" font-family="'Inter', system-ui, sans-serif" font-size="24" font-weight="500"
+        fill="#E24B4A" text-anchor="middle">Deň 30 · 29. marca 2026</text>
 
   <!-- Bottom accent line -->
   <rect x="80" y="530" width="1040" height="1" fill="#E24B4A" opacity="0.3"/>
