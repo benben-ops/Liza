@@ -1,0 +1,34 @@
+[
+  {
+    "slug": "hormuz-den-33",
+    "day": 33,
+    "date": "2026-04-02",
+    "sk": {
+      "file": "hormuz-den-33.html",
+      "title": "Blokáda Hormuzského prielivu 2026",
+      "meta": "Deň 33 · 2. apríla 2026 · 18-kroková analýza"
+    },
+    "en": {
+      "file": "hormuz-den-33-en.html",
+      "title": "Strait of Hormuz Blockade 2026",
+      "meta": "Day 33 · April 2, 2026 · 18-step analysis"
+    },
+    "ogImage": "og-hormuz-den-33.png"
+  },
+  {
+    "slug": "hormuz-den-30",
+    "day": 30,
+    "date": "2026-03-29",
+    "sk": {
+      "file": "hormuz-sk.html",
+      "title": "Hormuzský prieliv — Ropná kríza 2026",
+      "meta": "Deň 30 · 29. marca 2026 · 5 scenárov · 6 premenných"
+    },
+    "en": {
+      "file": "hormuz-den-30-en.html",
+      "title": "Strait of Hormuz — Oil Crisis 2026",
+      "meta": "Day 30 · March 29, 2026 · 5 scenarios · 6 variables"
+    },
+    "ogImage": "og-hormuz-den-30.png"
+  }
+]

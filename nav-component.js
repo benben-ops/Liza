@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  var PAGE_MAP = {
+  // Static pages — always known
+  var STATIC_PAGES = {
     'hormuz-sk.html': {
       lang: 'sk',
       pair: 'hormuz-den-30-en.html',
@@ -34,6 +35,38 @@
     return name || 'index.html';
   }
 
+  function detectMeta(filename) {
+    // Check static pages first
+    if (STATIC_PAGES[filename]) return STATIC_PAGES[filename];
+
+    // Auto-detect article pages by pattern: hormuz-den-XX.html or hormuz-den-XX-en.html
+    var enMatch = filename.match(/^hormuz-den-\d+-en\.html$/);
+    if (enMatch) {
+      var skFile = filename.replace('-en.html', '.html');
+      return {
+        lang: 'en',
+        pair: skFile,
+        type: 'analysis',
+        projektSk: 'horizont-udalosti.html',
+        projektEn: 'event-horizon.html'
+      };
+    }
+
+    var skMatch = filename.match(/^hormuz-den-\d+\.html$/);
+    if (skMatch) {
+      var enFile = filename.replace('.html', '-en.html');
+      return {
+        lang: 'sk',
+        pair: enFile,
+        type: 'analysis',
+        projektSk: 'horizont-udalosti.html',
+        projektEn: 'event-horizon.html'
+      };
+    }
+
+    return null; // Unknown page
+  }
+
   function el(tag, cls, html) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -64,7 +97,7 @@
     }
     nav.appendChild(langWrap);
 
-    // Spacer pushes right link to the right
+    // Spacer
     var spacer = el('span');
     spacer.style.flex = '1';
     nav.appendChild(spacer);
@@ -72,7 +105,7 @@
     // Divider
     nav.appendChild(el('span', 'nav-divider'));
 
-    // Right link: projekt or ← Index
+    // Right link: projekt or <- Index
     if (meta.type === 'analysis') {
       var projektHref = lang === 'sk' ? meta.projektSk : meta.projektEn;
       var projektLabel = lang === 'sk' ? 'Horizont udalostí' : 'Event Horizon';
@@ -90,7 +123,7 @@
 
   function init() {
     var filename = getFilename();
-    var meta = PAGE_MAP[filename];
+    var meta = detectMeta(filename);
     if (!meta) return;
 
     var navEl = buildNav(meta);

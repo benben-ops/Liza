@@ -71,16 +71,7 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
   </div>
 
   <div class="section-lbl">Dostupné analýzy</div>
-  <div class="analyses-grid">
-    <div class="analysis-card">
-      <div class="ac-title">Hormuzský prieliv — Ropná kríza 2026</div>
-      <div class="ac-meta">Deň 30 · 29. marca 2026 · 5 scenárov · 6 premenných</div>
-      <div class="ac-langs">
-        <a href="hormuz-sk.html" class="ac-lang">SK</a>
-        <a href="hormuz-den-30-en.html" class="ac-lang">EN</a>
-      </div>
-    </div>
-  </div>
+  <div class="analyses-grid" id="analyses-list"></div>
 
   <div style="margin-top:2.5rem;padding-top:1rem;border-top:1px solid #e0dfd8;text-align:center;font-size:11px;color:#999">
     Horizont udalostí · benben-ops
@@ -88,5 +79,22 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
 
 </div>
 <script src="nav-component.js"></script>
+<script>
+(function(){
+  fetch('analyses.json').then(function(r){return r.json()}).then(function(data){
+    var grid=document.getElementById('analyses-list');
+    data.forEach(function(a){
+      var card=document.createElement('div');
+      card.className='analysis-card';
+      var skLink=a.sk.file?'<a href="'+a.sk.file+'" class="ac-lang">SK</a>':'';
+      var enLink=a.en.file?'<a href="'+a.en.file+'" class="ac-lang">EN</a>':'';
+      card.innerHTML='<div class="ac-title">'+a.sk.title+'</div>'
+        +'<div class="ac-meta">'+a.sk.meta+'</div>'
+        +'<div class="ac-langs">'+skLink+enLink+'</div>';
+      grid.appendChild(card);
+    });
+  });
+})();
+</script>
 </body>
 </html>

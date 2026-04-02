@@ -55,21 +55,41 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
     <div class="sub">benben-ops · analytický projekt</div>
   </div>
 
-  <div class="lang-cards">
-    <a href="hormuz-sk.html" class="lang-card">
-      <div class="lc-badge">SK</div>
-      <div class="lc-title">Hormuzský prieliv — Ropná kríza 2026</div>
-      <div class="lc-desc">Kompletná vrstevnatá analýza · deň 30 · 29. marca 2026</div>
-    </a>
-    <a href="hormuz-den-30-en.html" class="lang-card">
-      <div class="lc-badge">EN</div>
-      <div class="lc-title">Strait of Hormuz — Oil Crisis 2026</div>
-      <div class="lc-desc">Complete layered analysis · day 30 · March 29, 2026</div>
-    </a>
+  <div class="lang-cards" id="index-cards"></div>
+
+  <div style="margin-top:1.5rem;text-align:center">
+    <a href="horizont-udalosti.html" style="font-size:11px;color:#888;text-decoration:none">SK — Všetky analýzy</a>
+    <span style="color:#ccc;margin:0 .5rem">|</span>
+    <a href="event-horizon.html" style="font-size:11px;color:#888;text-decoration:none">EN — All analyses</a>
   </div>
 
   <div class="footer">benben-ops.github.io/Liza</div>
 
 </div>
+<script>
+(function(){
+  fetch('analyses.json').then(function(r){return r.json()}).then(function(data){
+    var grid=document.getElementById('index-cards');
+    var latest=data[0];
+    // SK card
+    if(latest.sk.file){
+      var sk=document.createElement('a');
+      sk.href=latest.sk.file; sk.className='lang-card';
+      sk.innerHTML='<div class="lc-badge">SK</div><div class="lc-title">'+latest.sk.title+'</div><div class="lc-desc">'+latest.sk.meta+'</div>';
+      grid.appendChild(sk);
+    }
+    // EN card
+    var en=document.createElement('a');
+    en.className='lang-card';
+    if(latest.en.file){
+      en.href=latest.en.file;
+    } else {
+      en.href=latest.sk.file; en.style.opacity='0.5'; en.title='EN version coming soon';
+    }
+    en.innerHTML='<div class="lc-badge">EN</div><div class="lc-title">'+latest.en.title+'</div><div class="lc-desc">'+latest.en.meta+'</div>';
+    grid.appendChild(en);
+  });
+})();
+</script>
 </body>
 </html>
