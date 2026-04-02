@@ -57,16 +57,15 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
 .pill-blu{background:#e6f1fb;color:#185fa5;border-color:transparent}
 .pill-gry{background:#f0efe9;color:#555;border-color:transparent}
 .pill-key{font-weight:500;background:#faeeda;color:#854f0b;border-color:transparent}
-.tl-wrap{overflow-x:auto}
-.tl-table{width:100%;border-collapse:collapse;font-size:12px;min-width:700px}
-.tl-table th{background:#f5f4f0;color:#1a1a1a;padding:6px 10px;text-align:center;font-weight:500;font-size:11px;border:1px solid #e0dfd8}
-.tl-table td{padding:8px 10px;border:1px solid #e0dfd8;vertical-align:top;line-height:1.5;font-size:12px;color:#444}
-.tl-t0{background:#fff8e6;font-weight:500;border:2px solid #ba7517 !important}
-.tl-a{background:#fff0f0}
-.tl-b{background:#f0fff0}
-.tl-c{background:#f0f4ff}
-.tl-d{background:#fdf0ff}
-.tl-lbl{font-weight:600;font-size:11px;white-space:nowrap}
+.tl-card{border:1px solid #e0dfd8;border-radius:10px;overflow:hidden;margin-bottom:1rem;background:#fff}
+.tl-hdr{padding:.55rem .9rem;font-size:13px;font-weight:500}
+.tl-body{padding:.7rem .9rem}
+.tl-row{display:grid;grid-template-columns:76px 1fr;gap:7px;margin-bottom:.6rem;align-items:start}
+.tt{font-size:10px;font-weight:500;padding:2px 5px;border-radius:4px;text-align:center;line-height:1.3}
+.tt-p{background:#f5f4f0;color:#555}
+.tt-n{background:#fcebeb;color:#a32d2d}
+.tt-f{background:#e6f1fb;color:#185fa5}
+.tl-txt{font-size:12px;color:#444;line-height:1.5}
 .tag-common{display:inline-block;font-size:11px;padding:2px 7px;border-radius:10px;margin:2px;background:#eaf3de;color:#3b6d11}
 .tag-wildcard{display:inline-block;font-size:11px;padding:2px 7px;border-radius:10px;margin:2px;background:#faeeda;color:#854f0b;font-weight:500}
 .sol-card{border:1px solid #e0dfd8;border-radius:10px;margin-bottom:.85rem;overflow:hidden;background:#fff}
@@ -92,6 +91,7 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
 .imp-val{font-size:11px;font-weight:500;min-width:70px}
 @media(max-width:600px){
   .ana-grid{grid-template-columns:1fr}
+  .tl-row{grid-template-columns:60px 1fr}
   .tabs{gap:2px}
   .tab{padding:4px 7px;font-size:11px}
   body{padding:.5rem}
@@ -334,55 +334,48 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
 <!-- ══════════════════════════════════════════════════ -->
 <div class="panel" id="panel-lines">
 
-  <div class="section-lbl">Legend: T₀ = April 2, 2026 (actual state) · Gold border = present</div>
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#FAECE7;color:#993C1D">🔴 Line A — Escalation → Forced Opening</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₂</div><div class="tl-txt">Failure of Geneva talks (2025). 12-day air war Israel–Iran (June 2025). US max-pressure campaign. Iran Feb. 15–20 triples exports, draws down reserves. War-risk insurance 0.125%→0.4%.</div></div>
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₁</div><div class="tl-txt">Op. Epic Fury (Feb. 28): US+Israel attack, killing Khamenei. IRGC VHF warnings: "no vessel may pass." Traffic drops 70% within hours. Brent: 65→82 USD in 2 days.</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 2.4.26</div><div class="tl-txt"><strong>ACTUAL STATE:</strong> Day 33. US Op. Hormuz Campaign since 19.3. 120+ IRGC vessels destroyed. Tangsiri killed. 2,000 ships stranded. Brent 114 USD (27.3.). Deadline 6.4. US: power plants. Iran: "we never asked for a ceasefire."</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₁</div><div class="tl-txt">April 6 with no deal: US strikes Iranian power plants. Iran retaliates by mining waters beyond Hormuz. "Friendly" countries also lose passage. Brent 140–160 USD. Global recession. IEA reserves depleted.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₂</div><div class="tl-txt">War expands: Houthis + Hezbollah full activation. Region in flames. Brent 160–200 USD. Food crisis in 40+ countries. Global recession −4% GDP. Humanitarian catastrophe in Iran.</div></div>
+    </div>
+  </div>
 
-  <div class="tl-wrap">
-  <table class="tl-table">
-    <thead>
-      <tr>
-        <th style="width:90px">Timeline</th>
-        <th>T₋₂ (pre-crisis)</th>
-        <th>T₋₁ (trigger)</th>
-        <th class="tl-t0">T₀ — 2.4.2026</th>
-        <th>T₊₁ (near future)</th>
-        <th>T₊₂ (medium-term future)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="tl-a"><div class="tl-lbl">🔴 A<br>ESCALATION</div></td>
-        <td class="tl-a">Failure of Geneva talks (2025). 12-day air war Israel–Iran (June 2025). US max-pressure campaign. Iran Feb. 15–20 triples exports, draws down reserves. War-risk insurance 0.125%→0.4%.</td>
-        <td class="tl-a">Op. Epic Fury (Feb. 28): US+Israel attack, killing Khamenei. IRGC VHF warnings: "no vessel may pass." Traffic drops 70% within hours. Brent: 65→82 USD in 2 days.</td>
-        <td class="tl-t0">Day 33. US Op. Hormuz Campaign since 19.3. 120+ IRGC vessels destroyed. Tangsiri killed. 2,000 ships stranded. Brent 114 USD (27.3.). Deadline 6.4. US: power plants. Iran: "we never asked for a ceasefire."</td>
-        <td class="tl-a">April 6 with no deal: US strikes Iranian power plants. Iran retaliates by mining waters beyond Hormuz. "Friendly" countries also lose passage. Brent 140–160 USD. Global recession. IEA reserves depleted.</td>
-        <td class="tl-a">War expands: Houthis + Hezbollah full activation. Region in flames. Brent 160–200 USD. Food crisis in 40+ countries. Global recession −4% GDP. Humanitarian catastrophe in Iran.</td>
-      </tr>
-      <tr>
-        <td class="tl-b"><div class="tl-lbl">🟢 B<br>RESOLUTION</div></td>
-        <td class="tl-b">Oman, Qatar, Pakistan as diplomatic channels. China warns Iran against total blockade (45% of its oil via Hormuz). Iran signals willingness to impose a "transit fee" rather than total closure.</td>
-        <td class="tl-b">Blockade begins selectively. Iran allows passage for neutrals. Pakistan offers mediation. Diplomatic channels open from day one. India activates Op. Urja Suraksha.</td>
-        <td class="tl-t0">Islamabad summit (29.3.): four countries for negotiations. UK summit 3.4. (Cooper). 35 countries for freedom of navigation. Iran sent formal response to US 15-point proposal. Rubio–Araghchi meeting possible.</td>
-        <td class="tl-b">Before April 6: partial deal. US halts strikes on energy infrastructure. Iran systematically opens under "Iranian management." In exchange: partial sanctions freeze. Brent drops to 85–95 USD.</td>
-        <td class="tl-b">Hormuz Protocol: international strait governance (IMO model). Iran gets a formal role without monopoly. West accelerates energy diversification. New geopolitical reality of Hormuz as a "managed corridor."</td>
-      </tr>
-      <tr>
-        <td class="tl-c"><div class="tl-lbl">🔵 C<br>INTERNAL<br>CHANGE</div></td>
-        <td class="tl-c">Iran 2025: inflation 40%+, massive protests, tens of thousands of IRGC killed (January 2026). Khamenei the last cohesive authority. Economic collapse precedes military escalation. Reza Pahlavi chanted by protesters.</td>
-        <td class="tl-c">Killing of Khamenei = IRGC takes de facto control. Blockade = reflexive survival response, not a strategic plan. Internal struggle IRGC vs. reformists. Trump: Iranians "are afraid to say they want a deal."</td>
-        <td class="tl-t0">Tangsiri killed (26.3.) + IRGCN intelligence chief. Parliament in chaos (transit fee bill). Iran fighting on multiple fronts simultaneously. Military capacity degrading. Internal factionalism growing.</td>
-        <td class="tl-c">Series of targeted eliminations of IRGC command. Reform faction contacts Pakistan without IRGC knowledge. Partial strait opening de facto — IRGC lacks capacity to maintain full blockade.</td>
-        <td class="tl-c">Power transition in Tehran: junta or transitional government. Strait open. Massive humanitarian crisis in Iran. Reconstruction of desalination plants. New geopolitical map of the region — instability for years.</td>
-      </tr>
-      <tr>
-        <td class="tl-d"><div class="tl-lbl">🟣 D<br>SYSTEMIC<br>TRANSFORMATION</div></td>
-        <td class="tl-d">Decades of ignoring Hormuz vulnerability. Renewable commitments not translated into diversification. IEA reserves built for short-term shocks not for a 20+ mb/d outage. The global economy depends on a 34 km waterway.</td>
-        <td class="tl-d">IEA chief: "the biggest energy security challenge in history." QatarEnergy force majeure. Helium, sulfur, aluminum, fertilizers hit simultaneously. The world doesn't realize the breadth of the crisis — Bloomberg 29.3.</td>
-        <td class="tl-t0">Crisis day 33. IEA reserves dwindling. Asian manufacturing under pressure. Europe heading toward diesel shortage. GCC food crisis. Japan restarts reactors. Asian energy pact behind the scenes.</td>
-        <td class="tl-d">Crisis lasts 2–4 months. G20 emergency summit. Japan, Korea, India, ASEAN sign Asian Energy Treaty. Europe invests massively in LNG terminals. Prices 120–150 USD = structural demand destruction.</td>
-        <td class="tl-d">By 2030: Hormuz dependence drops 30–40%. 2026 crisis = inflection point bigger than 1973. New energy architecture: diversified, regionally autonomous. "Hormuz Index" — globally monitored indicator.</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#E1F5EE;color:#085041">🟢 Line B — Diplomatic Breakthrough → Resolution</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₂</div><div class="tl-txt">Oman, Qatar, Pakistan as diplomatic channels. China warns Iran against total blockade (45% of its oil via Hormuz). Iran signals willingness to impose a "transit fee" rather than total closure.</div></div>
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₁</div><div class="tl-txt">Blockade begins selectively. Iran allows passage for neutrals. Pakistan offers mediation. Diplomatic channels open from day one. India activates Op. Urja Suraksha.</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 2.4.26</div><div class="tl-txt"><strong>ACTUAL STATE:</strong> Islamabad summit (29.3.): four countries for negotiations. UK summit 3.4. (Cooper). 35 countries for freedom of navigation. Iran sent formal response to US 15-point proposal. Rubio–Araghchi meeting possible.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₁</div><div class="tl-txt">Before April 6: partial deal. US halts strikes on energy infrastructure. Iran systematically opens under "Iranian management." In exchange: partial sanctions freeze. Brent drops to 85–95 USD.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₂</div><div class="tl-txt">Hormuz Protocol: international strait governance (IMO model). Iran gets a formal role without monopoly. West accelerates energy diversification. New geopolitical reality of Hormuz as a "managed corridor."</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#E6F1FB;color:#0C447C">🔵 Line C — Iranian Internal Change → Regime Change</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₂</div><div class="tl-txt">Iran 2025: inflation 40%+, massive protests, tens of thousands of IRGC killed (January 2026). Khamenei the last cohesive authority. Economic collapse precedes military escalation. Reza Pahlavi chanted by protesters.</div></div>
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₁</div><div class="tl-txt">Killing of Khamenei = IRGC takes de facto control. Blockade = reflexive survival response, not a strategic plan. Internal struggle IRGC vs. reformists. Trump: Iranians "are afraid to say they want a deal."</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 2.4.26</div><div class="tl-txt"><strong>ACTUAL STATE:</strong> Tangsiri killed (26.3.) + IRGCN intelligence chief. Parliament in chaos (transit fee bill). Iran fighting on multiple fronts simultaneously. Military capacity degrading. Internal factionalism growing.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₁</div><div class="tl-txt">Series of targeted eliminations of IRGC command. Reform faction contacts Pakistan without IRGC knowledge. Partial strait opening de facto — IRGC lacks capacity to maintain full blockade.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₂</div><div class="tl-txt">Power transition in Tehran: junta or transitional government. Strait open. Massive humanitarian crisis in Iran. Reconstruction of desalination plants. New geopolitical map of the region — instability for years.</div></div>
+    </div>
+  </div>
+
+  <div class="tl-card">
+    <div class="tl-hdr" style="background:#EEEDFE;color:#534AB7">🟣 Line D — Prolonged Blockade → Systemic Transformation</div>
+    <div class="tl-body">
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₂</div><div class="tl-txt">Decades of ignoring Hormuz vulnerability. Renewable commitments not translated into diversification. IEA reserves built for short-term shocks not for a 20+ mb/d outage. The global economy depends on a 34 km waterway.</div></div>
+      <div class="tl-row"><div class="tt tt-p">PAST T₋₁</div><div class="tl-txt">IEA chief: "the biggest energy security challenge in history." QatarEnergy force majeure. Helium, sulphur, aluminium, fertilisers hit simultaneously. The world doesn't realise the breadth of the crisis — Bloomberg 29.3.</div></div>
+      <div class="tl-row"><div class="tt tt-n">T₀ 2.4.26</div><div class="tl-txt"><strong>ACTUAL STATE:</strong> Crisis day 33. IEA reserves dwindling. Asian manufacturing under pressure. Europe heading toward diesel shortage. GCC food crisis. Japan restarts reactors. Asian energy pact behind the scenes.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₁</div><div class="tl-txt">Crisis lasts 2–4 months. G20 emergency summit. Japan, Korea, India, ASEAN sign Asian Energy Treaty. Europe invests massively in LNG terminals. Prices 120–150 USD = structural demand destruction.</div></div>
+      <div class="tl-row"><div class="tt tt-f">FUT. T₊₂</div><div class="tl-txt">By 2030: Hormuz dependence drops 30–40%. 2026 crisis = inflection point bigger than 1973. New energy architecture: diversified, regionally autonomous. "Hormuz Index" — globally monitored indicator.</div></div>
+    </div>
   </div>
 
 </div>
