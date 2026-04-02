@@ -55,12 +55,12 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
     <div class="sub">benben-ops · analytický projekt</div>
   </div>
 
-  <div class="lang-cards" id="index-cards"></div>
+  <div id="index-articles"></div>
 
   <div style="margin-top:1.5rem;text-align:center">
-    <a href="horizont-udalosti.html" style="font-size:11px;color:#888;text-decoration:none">SK — Všetky analýzy</a>
+    <a href="horizont-udalosti.html" style="font-size:11px;color:#888;text-decoration:none">SK — Horizont udalostí</a>
     <span style="color:#ccc;margin:0 .5rem">|</span>
-    <a href="event-horizon.html" style="font-size:11px;color:#888;text-decoration:none">EN — All analyses</a>
+    <a href="event-horizon.html" style="font-size:11px;color:#888;text-decoration:none">EN — Event Horizon</a>
   </div>
 
   <div class="footer">benben-ops.github.io/Liza</div>
@@ -69,25 +69,26 @@ body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#f0efe9;p
 <script>
 (function(){
   fetch('analyses.json').then(function(r){return r.json()}).then(function(data){
-    var grid=document.getElementById('index-cards');
-    var latest=data[0];
-    // SK card
-    if(latest.sk.file){
+    var container=document.getElementById('index-articles');
+    data.forEach(function(a){
+      var row=document.createElement('div');
+      row.className='lang-cards';
+      row.style.marginBottom='0.75rem';
+      // SK card
       var sk=document.createElement('a');
-      sk.href=latest.sk.file; sk.className='lang-card';
-      sk.innerHTML='<div class="lc-badge">SK</div><div class="lc-title">'+latest.sk.title+'</div><div class="lc-desc">'+latest.sk.meta+'</div>';
-      grid.appendChild(sk);
-    }
-    // EN card
-    var en=document.createElement('a');
-    en.className='lang-card';
-    if(latest.en.file){
-      en.href=latest.en.file;
-    } else {
-      en.href=latest.sk.file; en.style.opacity='0.5'; en.title='EN version coming soon';
-    }
-    en.innerHTML='<div class="lc-badge">EN</div><div class="lc-title">'+latest.en.title+'</div><div class="lc-desc">'+latest.en.meta+'</div>';
-    grid.appendChild(en);
+      sk.className='lang-card';
+      if(a.sk.file){ sk.href=a.sk.file; }
+      sk.innerHTML='<div class="lc-badge">SK</div><div class="lc-title">'+a.sk.title+'</div><div class="lc-desc">'+a.sk.meta+'</div>';
+      row.appendChild(sk);
+      // EN card
+      var en=document.createElement('a');
+      en.className='lang-card';
+      if(a.en.file){ en.href=a.en.file; }
+      else { en.style.opacity='0.5'; en.title='EN coming soon'; }
+      en.innerHTML='<div class="lc-badge">EN</div><div class="lc-title">'+a.en.title+'</div><div class="lc-desc">'+a.en.meta+'</div>';
+      row.appendChild(en);
+      container.appendChild(row);
+    });
   });
 })();
 </script>
