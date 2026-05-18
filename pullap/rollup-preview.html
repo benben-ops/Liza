@@ -8,14 +8,9 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     background: #1a1a2e;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    font-family: 'Segoe UI', system-ui, sans-serif;
-    padding: 40px 20px;
-    gap: 16px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100vh; font-family: 'Segoe UI', system-ui, sans-serif;
+    padding: 40px 20px; gap: 16px;
   }
   .label { color: #888; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
   .rollup {
@@ -55,13 +50,23 @@
     border: 1px solid rgba(212,170,80,0.15);
   }
   .hero-svg { position: relative; z-index: 2; filter: drop-shadow(0 0 20px rgba(212,170,80,0.3)); }
+  .hero-img {
+    position: relative; z-index: 2;
+    width: 240px; height: 320px; object-fit: cover; object-position: top center;
+    border-radius: 50% 50% 40% 40%;
+    filter: drop-shadow(0 0 20px rgba(212,170,80,0.3));
+    display: none;
+  }
   .gym-name { position: absolute; top: 460px; left: 0; right: 0; text-align: center; padding: 0 20px; }
   .gym-name-main { font-size: 58px; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; color: #fff; line-height: 1; text-shadow: 0 0 40px rgba(212,170,80,0.4); }
   .gym-name-sub { font-size: 14px; letter-spacing: 8px; color: #d4aa50; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
   .gym-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 14px auto; }
-  .slogan { position: absolute; top: 590px; left: 0; right: 0; text-align: center; padding: 0 30px; }
-  .slogan-line1 { font-size: 19px; font-weight: 700; color: #fff; letter-spacing: 1px; line-height: 1.3; }
-  .slogan-line2 { font-size: 19px; font-weight: 300; color: rgba(255,255,255,0.85); letter-spacing: 1px; font-style: italic; line-height: 1.3; }
+  .slogan { position: absolute; top: 578px; left: 0; right: 0; text-align: center; padding: 0 24px; }
+  .slogan-main {
+    font-size: 20px; font-weight: 700; color: #fff;
+    letter-spacing: 0.5px; line-height: 1.35;
+  }
+  .slogan-accent { color: #d4aa50; font-style: italic; }
   .footer {
     position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 28px 22px;
     border-top: 1px solid rgba(212,170,80,0.2); background: rgba(0,0,0,0.3);
@@ -99,7 +104,10 @@
 
   <div class="hero">
     <div class="hero-circle"></div>
-    <svg class="hero-svg" width="200" height="300" viewBox="0 0 200 300" fill="none">
+    <!-- Reálny obrázok z anaben.sk (doplniť URL) -->
+    <img class="hero-img" id="heroImg" src="" alt="Ana & Ben" />
+    <!-- SVG placeholder (zobrazí sa kým nie je URL obrázka) -->
+    <svg class="hero-svg" id="heroSvg" width="200" height="300" viewBox="0 0 200 300" fill="none">
       <rect x="20" y="42" width="160" height="8" rx="4" fill="#d4aa50" opacity="0.8"/>
       <rect x="45" y="8" width="6" height="38" rx="3" fill="#d4aa50" opacity="0.4"/>
       <rect x="149" y="8" width="6" height="38" rx="3" fill="#d4aa50" opacity="0.4"/>
@@ -140,8 +148,10 @@
   </div>
 
   <div class="slogan">
-    <div class="slogan-line1">Zdvihni sa.</div>
-    <div class="slogan-line2">Nájdi svoju silu.</div>
+    <div class="slogan-main">
+      Máš na to,<br>
+      aby si sa <span class="slogan-accent">posunul?</span>
+    </div>
   </div>
 
   <div class="footer">
@@ -168,18 +178,25 @@
 </div>
 
 <div class="controls">
-  <button class="btn active" onclick="setSlogan('Zdvihni sa.','Nájdi svoju silu.')">Varianta 1</button>
-  <button class="btn" onclick="setSlogan('Sila,','ktorú si vždy mala.')">Varianta 2</button>
-  <button class="btn" onclick="setSlogan('Posilni telo.','Objav seba.')">Varianta 3</button>
-  <button class="btn" onclick="setSlogan('Každý pullup.','Jeden krok vpred.')">Varianta 4</button>
+  <button class="btn" onclick="setImg('https://anaben.sk/wp-content/uploads/2024/08/viktor1-edited.jpg')">Obrázok A</button>
+  <button class="btn" onclick="setImg('https://anaben.sk/wp-content/uploads/2024/09/rodovik3bielaKruh.png')">Obrázok B</button>
+  <button class="btn" onclick="setImg('')">SVG placeholder</button>
 </div>
-<span class="variant-label">Klikni pre výber sloganu</span>
+<span class="variant-label">Vyber obrázok — alebo pošli URL z anaben.sk</span>
 
 <script>
-function setSlogan(l1,l2){
-  document.querySelector('.slogan-line1').textContent=l1;
-  document.querySelector('.slogan-line2').textContent=l2;
-  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('active'));
+function setImg(url) {
+  var img = document.getElementById('heroImg');
+  var svg = document.getElementById('heroSvg');
+  if (url) {
+    img.src = url;
+    img.style.display = 'block';
+    svg.style.display = 'none';
+  } else {
+    img.style.display = 'none';
+    svg.style.display = 'block';
+  }
+  document.querySelectorAll('.btn').forEach(function(b){ b.classList.remove('active'); });
   event.target.classList.add('active');
 }
 </script>
