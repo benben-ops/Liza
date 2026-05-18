@@ -1,11 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <rect width="1200" height="630" fill="#f0efe9"/>
   <rect x="0" y="0" width="8" height="630" fill="#E24B4A"/>
-  <text x="600" y="380" font-family="Georgia,serif" font-size="320" font-weight="700" fill="#E24B4A" text-anchor="middle" dominant-baseline="middle" opacity="0.15">H</text>
-  <text x="600" y="180" font-family="Inter,system-ui,sans-serif" font-size="58" font-weight="600" fill="#1a1a1a" text-anchor="middle">Horizont udalo&#353;t&#237;</text>
-  <text x="600" y="248" font-family="Inter,system-ui,sans-serif" font-size="24" fill="#888" text-anchor="middle">Event Horizon</text>
-  <text x="600" y="360" font-family="Inter,system-ui,sans-serif" font-size="40" font-weight="600" fill="#a32d2d" text-anchor="middle">Blok&#225;da Hormuzsk&#233;ho prielivu 2026</text>
-  <text x="600" y="418" font-family="Inter,system-ui,sans-serif" font-size="30" font-weight="500" fill="#1a1a1a" text-anchor="middle">De&#328; 79 &#183; 17. m&#225;ja 2026</text>
-  <text x="600" y="464" font-family="Inter,system-ui,sans-serif" font-size="20" fill="#666" text-anchor="middle">Diplomatick&#253; pat &#183; Trump ultim&#225;tum &#183; Brent $108/bl</text>
-  <text x="600" y="580" font-family="Inter,system-ui,sans-serif" font-size="16" fill="#bbb" text-anchor="middle">benben-ops.github.io/Liza</text>
+  <text x="600" y="340" font-family="Georgia, 'Times New Roman', serif" font-size="360" font-weight="700"
+        fill="#E24B4A" text-anchor="middle" dominant-baseline="middle" opacity="0.18">H</text>
+  <text x="600" y="220" font-family="'Inter', system-ui, sans-serif" font-size="64" font-weight="600"
+        fill="#1a1a1a" text-anchor="middle" letter-spacing="-1">Horizont udalo&#347;t&#237;</text>
+  <text x="600" y="290" font-family="'Inter', system-ui, sans-serif" font-size="26" font-weight="400"
+        fill="#666" text-anchor="middle">Event Horizon</text>
+  <text x="600" y="390" font-family="'Inter', system-ui, sans-serif" font-size="20" font-weight="400"
+        fill="#888" text-anchor="middle">Automatizovan&#225; extrapol&#225;cia udalost&#237; · benben-ops</text>
+  <text x="600" y="490" font-family="'Inter', system-ui, sans-serif" font-size="24" font-weight="500"
+        fill="#E24B4A" text-anchor="middle">Deň 79 · 17. mája 2026</text>
+  <rect x="80" y="530" width="1040" height="1" fill="#E24B4A" opacity="0.3"/>
+  <text x="600" y="568" font-family="'Inter', system-ui, sans-serif" font-size="18" font-weight="400"
+        fill="#aaa" text-anchor="middle">benben-ops.github.io/Liza</text>
 </svg>
