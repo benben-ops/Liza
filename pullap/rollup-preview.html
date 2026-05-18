@@ -13,80 +13,81 @@
     padding: 40px 20px; gap: 16px;
   }
   .label { color: #888; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+
   .rollup {
     width: 340px; height: 800px; position: relative; overflow: hidden;
-    border-radius: 4px; box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-    background: linear-gradient(170deg, #2d1b69 0%, #1a0f3d 30%, #0d0723 60%, #1a0a0a 80%, #2d1500 100%);
+    border-radius: 4px; box-shadow: 0 30px 80px rgba(0,0,0,0.7);
   }
-  .rollup::before {
-    content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(212,170,80,0.08) 0%, transparent 70%);
-    top: 120px; left: -80px; pointer-events: none;
+
+  /* Pozadie — foto Ana & Ben */
+  .bg-photo {
+    position: absolute; inset: 0;
+    background-image: url('https://raw.githubusercontent.com/benben-ops/Liza/main/pullap/anaben-photo.jpg');
+    background-size: cover;
+    background-position: center top;
+    z-index: 0;
   }
-  .rollup::after {
-    content: ''; position: absolute; width: 300px; height: 300px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(147,90,200,0.12) 0%, transparent 70%);
-    bottom: 100px; right: -50px; pointer-events: none;
+
+  /* Tmavý gradient overlay — horná a dolná časť tmavšie, stred viditeľnejší */
+  .bg-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(
+      to bottom,
+      rgba(10,5,30,0.88) 0%,
+      rgba(10,5,30,0.45) 28%,
+      rgba(10,5,30,0.30) 50%,
+      rgba(10,5,30,0.55) 70%,
+      rgba(10,5,30,0.92) 100%
+    );
   }
+
+  /* Všetok obsah nad overlayom */
+  .content { position: absolute; inset: 0; z-index: 2; }
+
+  /* HEADER */
   .header {
-    position: absolute; top: 0; left: 0; right: 0; padding: 22px 28px 18px;
+    position: absolute; top: 0; left: 0; right: 0; padding: 20px 24px 16px;
     display: flex; align-items: center; justify-content: space-between;
-    border-bottom: 1px solid rgba(212,170,80,0.2);
+    border-bottom: 1px solid rgba(212,170,80,0.25);
   }
   .brand-logo { display: flex; flex-direction: column; }
-  .brand-name { font-size: 18px; font-weight: 700; letter-spacing: 3px; color: #d4aa50; text-transform: uppercase; }
-  .brand-sub { font-size: 8px; letter-spacing: 2.5px; color: rgba(212,170,80,0.6); text-transform: uppercase; margin-top: 2px; }
+  .brand-name { font-size: 17px; font-weight: 700; letter-spacing: 3px; color: #d4aa50; text-transform: uppercase; }
+  .brand-sub { font-size: 7.5px; letter-spacing: 2.5px; color: rgba(212,170,80,0.65); text-transform: uppercase; margin-top: 2px; }
   .brand-symbol {
-    width: 36px; height: 36px; border: 2px solid rgba(212,170,80,0.5); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-size: 16px; color: #d4aa50;
+    width: 34px; height: 34px; border: 1.5px solid rgba(212,170,80,0.5); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 15px; color: #d4aa50;
   }
-  .hero {
-    position: absolute; top: 80px; left: 0; right: 0; height: 380px;
-    display: flex; align-items: center; justify-content: center; overflow: hidden;
+
+  /* GYM NAME — v strede */
+  .gym-block {
+    position: absolute; bottom: 220px; left: 0; right: 0;
+    text-align: center; padding: 0 20px;
   }
-  .hero-circle {
-    position: absolute; width: 260px; height: 260px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(212,170,80,0.15) 0%, rgba(212,170,80,0.04) 60%, transparent 100%);
-    border: 1px solid rgba(212,170,80,0.15);
+  .gym-divider-top { width: 50px; height: 1.5px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 0 auto 12px; }
+  .gym-name-main { font-size: 62px; font-weight: 900; letter-spacing: 7px; text-transform: uppercase; color: #fff; line-height: 1; text-shadow: 0 2px 30px rgba(0,0,0,0.8), 0 0 60px rgba(212,170,80,0.3); }
+  .gym-name-sub { font-size: 13px; letter-spacing: 9px; color: #d4aa50; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
+  .gym-divider-bot { width: 50px; height: 1.5px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 12px auto 0; }
+
+  /* SLOGAN */
+  .slogan {
+    position: absolute; bottom: 120px; left: 0; right: 0;
+    text-align: center; padding: 0 28px;
   }
-  .hero-svg { position: relative; z-index: 2; filter: drop-shadow(0 0 20px rgba(212,170,80,0.3)); }
-  .hero-img {
-    position: relative; z-index: 2;
-    width: 240px; height: 320px; object-fit: cover; object-position: top center;
-    border-radius: 50% 50% 40% 40%;
-    filter: drop-shadow(0 0 20px rgba(212,170,80,0.3));
-    display: none;
-  }
-  .gym-name { position: absolute; top: 460px; left: 0; right: 0; text-align: center; padding: 0 20px; }
-  .gym-name-main { font-size: 58px; font-weight: 900; letter-spacing: 6px; text-transform: uppercase; color: #fff; line-height: 1; text-shadow: 0 0 40px rgba(212,170,80,0.4); }
-  .gym-name-sub { font-size: 14px; letter-spacing: 8px; color: #d4aa50; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
-  .gym-divider { width: 60px; height: 2px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 14px auto; }
-  .slogan { position: absolute; top: 578px; left: 0; right: 0; text-align: center; padding: 0 24px; }
-  .slogan-main {
-    font-size: 20px; font-weight: 700; color: #fff;
-    letter-spacing: 0.5px; line-height: 1.35;
-  }
-  .slogan-accent { color: #d4aa50; font-style: italic; }
+  .slogan-main { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.4; letter-spacing: 0.3px; text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
+  .slogan-accent { color: #d4aa50; font-style: italic; font-weight: 700; }
+
+  /* FOOTER */
   .footer {
-    position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 28px 22px;
-    border-top: 1px solid rgba(212,170,80,0.2); background: rgba(0,0,0,0.3);
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 24px 20px;
+    border-top: 1px solid rgba(212,170,80,0.2);
     display: flex; align-items: center; justify-content: space-between;
   }
   .footer-info { display: flex; flex-direction: column; gap: 3px; }
   .footer-web { font-size: 11px; color: #d4aa50; letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase; }
-  .footer-social { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 1px; }
-  .qr-placeholder {
-    width: 50px; height: 50px; border: 1.5px solid rgba(212,170,80,0.4); border-radius: 4px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .controls { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 8px; }
-  .btn {
-    padding: 8px 16px; border: 1px solid rgba(212,170,80,0.4); border-radius: 20px;
-    background: transparent; color: #d4aa50; font-size: 12px; cursor: pointer;
-    letter-spacing: 1px; transition: all 0.2s;
-  }
-  .btn:hover, .btn.active { background: rgba(212,170,80,0.15); border-color: #d4aa50; }
-  .variant-label { color: #666; font-size: 11px; margin-top: 4px; }
+  .footer-social { font-size: 8.5px; color: rgba(255,255,255,0.45); letter-spacing: 1px; }
+  .qr-placeholder { width: 48px; height: 48px; border: 1.5px solid rgba(212,170,80,0.35); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+
+  .variant-label { color: #666; font-size: 11px; margin-top: 4px; text-align: center; }
 </style>
 </head>
 <body>
@@ -94,111 +95,58 @@
 <span class="label">Rollup Preview — 85 × 200 cm</span>
 
 <div class="rollup">
-  <div class="header">
-    <div class="brand-logo">
-      <div class="brand-name">Ana &amp; Ben</div>
-      <div class="brand-sub">Osobnostný rozvoj</div>
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+
+  <div class="content">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="brand-logo">
+        <div class="brand-name">Ana &amp; Ben</div>
+        <div class="brand-sub">Osobnostný rozvoj</div>
+      </div>
+      <div class="brand-symbol">✦</div>
     </div>
-    <div class="brand-symbol">✦</div>
-  </div>
 
-  <div class="hero">
-    <div class="hero-circle"></div>
-    <!-- Reálny obrázok z anaben.sk (doplniť URL) -->
-    <img class="hero-img" id="heroImg" src="" alt="Ana & Ben" />
-    <!-- SVG placeholder (zobrazí sa kým nie je URL obrázka) -->
-    <svg class="hero-svg" id="heroSvg" width="200" height="300" viewBox="0 0 200 300" fill="none">
-      <rect x="20" y="42" width="160" height="8" rx="4" fill="#d4aa50" opacity="0.8"/>
-      <rect x="45" y="8" width="6" height="38" rx="3" fill="#d4aa50" opacity="0.4"/>
-      <rect x="149" y="8" width="6" height="38" rx="3" fill="#d4aa50" opacity="0.4"/>
-      <path d="M75 50 Q72 65 70 78" stroke="#c8a87a" stroke-width="5" stroke-linecap="round"/>
-      <path d="M125 50 Q128 65 130 78" stroke="#c8a87a" stroke-width="5" stroke-linecap="round"/>
-      <ellipse cx="100" cy="90" rx="18" ry="20" fill="#c8a87a"/>
-      <ellipse cx="100" cy="82" rx="19" ry="10" fill="#4a2800"/>
-      <path d="M82 85 Q78 100 80 115" stroke="#4a2800" stroke-width="8" stroke-linecap="round"/>
-      <path d="M118 85 Q122 100 120 115" stroke="#4a2800" stroke-width="8" stroke-linecap="round"/>
-      <rect x="93" y="108" width="14" height="12" rx="4" fill="#c8a87a"/>
-      <path d="M75 118 Q75 105 100 118 Q125 105 125 118 L122 175 Q100 185 78 175 Z" fill="url(#bodyGrad)"/>
-      <path d="M75 118 Q65 115 62 108 Q58 100 60 95 Q65 88 70 92 Q74 96 75 118" fill="#c8a87a"/>
-      <path d="M125 118 Q135 115 138 108 Q142 100 140 95 Q135 88 130 92 Q126 96 125 118" fill="#c8a87a"/>
-      <path d="M60 95 Q60 82 70 78" stroke="#c8a87a" stroke-width="7" stroke-linecap="round"/>
-      <path d="M140 95 Q140 82 130 78" stroke="#c8a87a" stroke-width="7" stroke-linecap="round"/>
-      <path d="M78 175 Q70 195 72 215 Q74 228 80 225 Q88 222 88 210 Q90 195 95 180" fill="#3d2060"/>
-      <path d="M122 175 Q130 195 128 215 Q126 228 120 225 Q112 222 112 210 Q110 195 105 180" fill="#3d2060"/>
-      <path d="M72 215 Q65 235 70 250 Q76 260 82 255 Q88 250 86 238 Q84 228 80 225" fill="#c8a87a"/>
-      <path d="M128 215 Q135 235 130 250 Q124 260 118 255 Q112 250 114 238 Q116 228 120 225" fill="#c8a87a"/>
-      <ellipse cx="100" cy="160" rx="50" ry="80" fill="url(#glowGrad)" opacity="0.15"/>
-      <defs>
-        <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#9060c0"/>
-          <stop offset="100%" stop-color="#3d2060"/>
-        </linearGradient>
-        <radialGradient id="glowGrad">
-          <stop offset="0%" stop-color="#d4aa50"/>
-          <stop offset="100%" stop-color="transparent"/>
-        </radialGradient>
-      </defs>
-    </svg>
-  </div>
-
-  <div class="gym-name">
-    <div class="gym-name-main">PULLAP</div>
-    <div class="gym-name-sub">fitko</div>
-    <div class="gym-divider"></div>
-  </div>
-
-  <div class="slogan">
-    <div class="slogan-main">
-      Máš na to,<br>
-      aby si sa <span class="slogan-accent">posunul?</span>
+    <!-- GYM NAME -->
+    <div class="gym-block">
+      <div class="gym-divider-top"></div>
+      <div class="gym-name-main">PULLAP</div>
+      <div class="gym-name-sub">fitko</div>
+      <div class="gym-divider-bot"></div>
     </div>
-  </div>
 
-  <div class="footer">
-    <div class="footer-info">
-      <div class="footer-web">anaben.sk</div>
-      <div class="footer-social">@anaben.sk · Škola Uma</div>
+    <!-- SLOGAN -->
+    <div class="slogan">
+      <div class="slogan-main">Máš na to,<br>aby si sa <span class="slogan-accent">posunul?</span></div>
     </div>
-    <div class="qr-placeholder">
-      <svg width="40" height="40" viewBox="0 0 40 40">
-        <rect x="2" y="2" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
-        <rect x="5" y="5" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
-        <rect x="24" y="2" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
-        <rect x="27" y="5" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
-        <rect x="2" y="24" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
-        <rect x="5" y="27" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
-        <rect x="24" y="20" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
-        <rect x="30" y="20" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
-        <rect x="24" y="26" width="4" height="8" fill="#d4aa50" opacity="0.5"/>
-        <rect x="30" y="26" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
-        <rect x="36" y="26" width="2" height="4" fill="#d4aa50" opacity="0.5"/>
-      </svg>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="footer-info">
+        <div class="footer-web">anaben.sk</div>
+        <div class="footer-social">@anaben.sk · Škola Uma</div>
+      </div>
+      <div class="qr-placeholder">
+        <svg width="38" height="38" viewBox="0 0 40 40">
+          <rect x="2" y="2" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
+          <rect x="5" y="5" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
+          <rect x="24" y="2" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
+          <rect x="27" y="5" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
+          <rect x="2" y="24" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
+          <rect x="5" y="27" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
+          <rect x="24" y="20" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
+          <rect x="30" y="20" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
+          <rect x="24" y="26" width="4" height="8" fill="#d4aa50" opacity="0.5"/>
+          <rect x="30" y="26" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
+          <rect x="36" y="26" width="2" height="4" fill="#d4aa50" opacity="0.5"/>
+        </svg>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="controls">
-  <button class="btn" onclick="setImg('https://anaben.sk/wp-content/uploads/2024/08/viktor1-edited.jpg')">Obrázok A</button>
-  <button class="btn" onclick="setImg('https://anaben.sk/wp-content/uploads/2024/09/rodovik3bielaKruh.png')">Obrázok B</button>
-  <button class="btn" onclick="setImg('')">SVG placeholder</button>
-</div>
-<span class="variant-label">Vyber obrázok — alebo pošli URL z anaben.sk</span>
+<span class="variant-label">Preview — foto Ana &amp; Ben ako pozadie rollup bannera</span>
 
-<script>
-function setImg(url) {
-  var img = document.getElementById('heroImg');
-  var svg = document.getElementById('heroSvg');
-  if (url) {
-    img.src = url;
-    img.style.display = 'block';
-    svg.style.display = 'none';
-  } else {
-    img.style.display = 'none';
-    svg.style.display = 'block';
-  }
-  document.querySelectorAll('.btn').forEach(function(b){ b.classList.remove('active'); });
-  event.target.classList.add('active');
-}
-</script>
 </body>
 </html>
