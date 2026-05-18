@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pullap Rollup Preview</title>
+<style>
+  body { margin: 0; background: #111; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: sans-serif; }
+  #loading { color: #d4aa50; font-size: 14px; letter-spacing: 2px; }
+</style>
+</head>
+<body>
+<div id="loading">Načítavam preview...</div>
+<script>
+fetch('https://raw.githubusercontent.com/benben-ops/Liza/main/pullap/rollup-preview.html?' + Date.now())
+  .then(function(r){ return r.text(); })
+  .then(function(html){
+    document.open();
+    document.write(html);
+    document.close();
+  })
+  .catch(function(e){
+    document.body.innerHTML = '<p style="color:red;padding:20px">Chyba: ' + e + '</p>';
+  });
+</script>
+</body>
+</html>
