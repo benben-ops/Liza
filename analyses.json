@@ -1,5 +1,21 @@
 [
   {
+    "slug": "hormuz-den-79",
+    "day": 79,
+    "date": "2026-05-17",
+    "sk": {
+      "file": "hormuz-den-79.html",
+      "title": "Blokáda Hormuzského prielivu 2026",
+      "meta": "Deň 79 · 17. mája 2026 · 18-kroková analýza"
+    },
+    "en": {
+      "file": "hormuz-den-79-en.html",
+      "title": "Strait of Hormuz Blockade 2026",
+      "meta": "Day 79 · May 17, 2026 · 18-step analysis"
+    },
+    "ogImage": "og-hormuz-den-79.png"
+  },
+  {
     "slug": "hormuz-den-33",
     "day": 33,
     "date": "2026-04-02",
