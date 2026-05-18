@@ -13,22 +13,16 @@
     padding: 40px 20px; gap: 16px;
   }
   .label { color: #888; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
-
   .rollup {
     width: 340px; height: 800px; position: relative; overflow: hidden;
     border-radius: 4px; box-shadow: 0 30px 80px rgba(0,0,0,0.7);
   }
-
-  /* Pozadie — foto Ana & Ben */
   .bg-photo {
     position: absolute; inset: 0;
-    background-image: url('https://raw.githubusercontent.com/benben-ops/Liza/main/pullap/anaben-photo.jpg');
     background-size: cover;
     background-position: center top;
     z-index: 0;
   }
-
-  /* Tmavý gradient overlay — horná a dolná časť tmavšie, stred viditeľnejší */
   .bg-overlay {
     position: absolute; inset: 0; z-index: 1;
     background: linear-gradient(
@@ -40,11 +34,7 @@
       rgba(10,5,30,0.92) 100%
     );
   }
-
-  /* Všetok obsah nad overlayom */
   .content { position: absolute; inset: 0; z-index: 2; }
-
-  /* HEADER */
   .header {
     position: absolute; top: 0; left: 0; right: 0; padding: 20px 24px 16px;
     display: flex; align-items: center; justify-content: space-between;
@@ -53,40 +43,20 @@
   .brand-logo { display: flex; flex-direction: column; }
   .brand-name { font-size: 17px; font-weight: 700; letter-spacing: 3px; color: #d4aa50; text-transform: uppercase; }
   .brand-sub { font-size: 7.5px; letter-spacing: 2.5px; color: rgba(212,170,80,0.65); text-transform: uppercase; margin-top: 2px; }
-  .brand-symbol {
-    width: 34px; height: 34px; border: 1.5px solid rgba(212,170,80,0.5); border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-size: 15px; color: #d4aa50;
-  }
-
-  /* GYM NAME — v strede */
-  .gym-block {
-    position: absolute; bottom: 220px; left: 0; right: 0;
-    text-align: center; padding: 0 20px;
-  }
+  .brand-symbol { width: 34px; height: 34px; border: 1.5px solid rgba(212,170,80,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #d4aa50; }
+  .gym-block { position: absolute; bottom: 220px; left: 0; right: 0; text-align: center; padding: 0 20px; }
   .gym-divider-top { width: 50px; height: 1.5px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 0 auto 12px; }
   .gym-name-main { font-size: 62px; font-weight: 900; letter-spacing: 7px; text-transform: uppercase; color: #fff; line-height: 1; text-shadow: 0 2px 30px rgba(0,0,0,0.8), 0 0 60px rgba(212,170,80,0.3); }
   .gym-name-sub { font-size: 13px; letter-spacing: 9px; color: #d4aa50; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
   .gym-divider-bot { width: 50px; height: 1.5px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 12px auto 0; }
-
-  /* SLOGAN */
-  .slogan {
-    position: absolute; bottom: 120px; left: 0; right: 0;
-    text-align: center; padding: 0 28px;
-  }
+  .slogan { position: absolute; bottom: 120px; left: 0; right: 0; text-align: center; padding: 0 28px; }
   .slogan-main { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.4; letter-spacing: 0.3px; text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
   .slogan-accent { color: #d4aa50; font-style: italic; font-weight: 700; }
-
-  /* FOOTER */
-  .footer {
-    position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 24px 20px;
-    border-top: 1px solid rgba(212,170,80,0.2);
-    display: flex; align-items: center; justify-content: space-between;
-  }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 24px 20px; border-top: 1px solid rgba(212,170,80,0.2); display: flex; align-items: center; justify-content: space-between; }
   .footer-info { display: flex; flex-direction: column; gap: 3px; }
   .footer-web { font-size: 11px; color: #d4aa50; letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase; }
   .footer-social { font-size: 8.5px; color: rgba(255,255,255,0.45); letter-spacing: 1px; }
   .qr-placeholder { width: 48px; height: 48px; border: 1.5px solid rgba(212,170,80,0.35); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
-
   .variant-label { color: #666; font-size: 11px; margin-top: 4px; text-align: center; }
 </style>
 </head>
@@ -95,11 +65,9 @@
 <span class="label">Rollup Preview — 85 × 200 cm</span>
 
 <div class="rollup">
-  <div class="bg-photo"></div>
+  <div class="bg-photo" id="bgPhoto"></div>
   <div class="bg-overlay"></div>
-
   <div class="content">
-    <!-- HEADER -->
     <div class="header">
       <div class="brand-logo">
         <div class="brand-name">Ana &amp; Ben</div>
@@ -107,21 +75,15 @@
       </div>
       <div class="brand-symbol">✦</div>
     </div>
-
-    <!-- GYM NAME -->
     <div class="gym-block">
       <div class="gym-divider-top"></div>
       <div class="gym-name-main">PULLAP</div>
       <div class="gym-name-sub">fitko</div>
       <div class="gym-divider-bot"></div>
     </div>
-
-    <!-- SLOGAN -->
     <div class="slogan">
       <div class="slogan-main">Máš na to,<br>aby si sa <span class="slogan-accent">posunul?</span></div>
     </div>
-
-    <!-- FOOTER -->
     <div class="footer">
       <div class="footer-info">
         <div class="footer-web">anaben.sk</div>
@@ -146,7 +108,13 @@
   </div>
 </div>
 
-<span class="variant-label">Preview — foto Ana &amp; Ben ako pozadie rollup bannera</span>
+<span class="variant-label">Preview — Ana &amp; Ben rollup banner</span>
 
+<script>
+// Cache-bust: pridá timestamp k URL obrázka aby prehliadač nenačítal starý
+var ts = Date.now();
+var imgUrl = 'https://raw.githubusercontent.com/benben-ops/Liza/main/pullap/anaben-photo.jpg?v=' + ts;
+document.getElementById('bgPhoto').style.backgroundImage = 'url(' + imgUrl + ')';
+</script>
 </body>
 </html>
