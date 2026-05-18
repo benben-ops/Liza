@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pullap Fitko — Rollup v2</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #1a1a2e; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; font-family: 'Segoe UI', system-ui, sans-serif; padding: 40px 20px; gap: 16px; }
+  .label { color: #888; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; }
+  .rollup { width: 340px; height: 800px; position: relative; overflow: hidden; border-radius: 4px; box-shadow: 0 30px 80px rgba(0,0,0,0.7); }
+  .bg-photo {
+    position: absolute; inset: 0;
+    background-image: url('https://raw.githubusercontent.com/benben-ops/Liza/main/pullap/photo-v2.jpg');
+    background-size: cover; background-position: center top; z-index: 0;
+  }
+  .bg-overlay {
+    position: absolute; inset: 0; z-index: 1;
+    background: linear-gradient(to bottom, rgba(10,5,30,0.88) 0%, rgba(10,5,30,0.45) 28%, rgba(10,5,30,0.30) 50%, rgba(10,5,30,0.55) 70%, rgba(10,5,30,0.92) 100%);
+  }
+  .content { position: absolute; inset: 0; z-index: 2; }
+  .header { position: absolute; top: 0; left: 0; right: 0; padding: 20px 24px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(212,170,80,0.25); }
+  .brand-name { font-size: 17px; font-weight: 700; letter-spacing: 3px; color: #d4aa50; text-transform: uppercase; }
+  .brand-sub { font-size: 7.5px; letter-spacing: 2.5px; color: rgba(212,170,80,0.65); text-transform: uppercase; margin-top: 2px; }
+  .brand-symbol { width: 34px; height: 34px; border: 1.5px solid rgba(212,170,80,0.5); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 15px; color: #d4aa50; }
+  .gym-block { position: absolute; bottom: 220px; left: 0; right: 0; text-align: center; padding: 0 20px; }
+  .gym-div { width: 50px; height: 1.5px; background: linear-gradient(90deg, transparent, #d4aa50, transparent); margin: 12px auto; }
+  .gym-main { font-size: 62px; font-weight: 900; letter-spacing: 7px; text-transform: uppercase; color: #fff; line-height: 1; text-shadow: 0 2px 30px rgba(0,0,0,0.8), 0 0 60px rgba(212,170,80,0.3); }
+  .gym-sub { font-size: 13px; letter-spacing: 9px; color: #d4aa50; text-transform: uppercase; margin-top: 6px; font-weight: 300; }
+  .slogan { position: absolute; bottom: 120px; left: 0; right: 0; text-align: center; padding: 0 28px; }
+  .slogan-main { font-size: 18px; font-weight: 600; color: #fff; line-height: 1.4; text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
+  .slogan-accent { color: #d4aa50; font-style: italic; font-weight: 700; }
+  .footer { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 24px 20px; border-top: 1px solid rgba(212,170,80,0.2); display: flex; align-items: center; justify-content: space-between; }
+  .footer-web { font-size: 11px; color: #d4aa50; letter-spacing: 1.5px; font-weight: 600; text-transform: uppercase; }
+  .footer-social { font-size: 8.5px; color: rgba(255,255,255,0.45); letter-spacing: 1px; margin-top: 3px; }
+  .qr { width: 48px; height: 48px; border: 1.5px solid rgba(212,170,80,0.35); border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+<span class="label">Rollup Preview — 85 × 200 cm</span>
+<div class="rollup">
+  <div class="bg-photo"></div>
+  <div class="bg-overlay"></div>
+  <div class="content">
+    <div class="header">
+      <div>
+        <div class="brand-name">Ana &amp; Ben</div>
+        <div class="brand-sub">Osobnostný rozvoj</div>
+      </div>
+      <div class="brand-symbol">✦</div>
+    </div>
+    <div class="gym-block">
+      <div class="gym-div"></div>
+      <div class="gym-main">PULLAP</div>
+      <div class="gym-sub">fitko</div>
+      <div class="gym-div"></div>
+    </div>
+    <div class="slogan">
+      <div class="slogan-main">Máš na to,<br>aby si sa <span class="slogan-accent">posunul?</span></div>
+    </div>
+    <div class="footer">
+      <div>
+        <div class="footer-web">anaben.sk</div>
+        <div class="footer-social">@anaben.sk · Škola Uma</div>
+      </div>
+      <div class="qr">
+        <svg width="38" height="38" viewBox="0 0 40 40">
+          <rect x="2" y="2" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
+          <rect x="5" y="5" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
+          <rect x="24" y="2" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
+          <rect x="27" y="5" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
+          <rect x="2" y="24" width="14" height="14" rx="2" fill="none" stroke="#d4aa50" stroke-width="1.5"/>
+          <rect x="5" y="27" width="8" height="8" rx="1" fill="#d4aa50" opacity="0.6"/>
+          <rect x="24" y="20" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
+          <rect x="30" y="20" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
+          <rect x="24" y="26" width="4" height="8" fill="#d4aa50" opacity="0.5"/>
+          <rect x="30" y="26" width="4" height="4" fill="#d4aa50" opacity="0.5"/>
+          <rect x="36" y="26" width="2" height="4" fill="#d4aa50" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
